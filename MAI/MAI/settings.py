@@ -93,7 +93,9 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'api.wsgi.app'
+
+WSGI_APPLICATION = 'MAI.wsgi.application'
+
 
 
 

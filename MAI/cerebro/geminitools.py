@@ -7,11 +7,15 @@ import random
 from .jsontools import eliminar_cadenas
 from google.api_core.exceptions import InternalServerError
 import os
+from dotenv import load_dotenv  # Importa la función load_dotenv
+
+load_dotenv()  # Carga las variables de entorno desde el archivo .env
 
 logging.basicConfig(level=logging.ERROR)
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
-genai.configure(api_key = os.environ['API_KEY_GOOGLE'])
+genai.configure(api_key=os.getenv('API_KEY_GOOGLE'))  # Usa os.getenv para obtener la clave de API
+
 
 uploaded_files = []
 
