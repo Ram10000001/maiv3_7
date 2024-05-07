@@ -75,7 +75,7 @@ MIDDLEWARE = [
     'allauth.account.middleware.AccountMiddleware',
 ]
 
-ROOT_URLCONF = 'amadeo.urls'
+ROOT_URLCONF = 'MAI.urls'
 
 TEMPLATES = [
     {
