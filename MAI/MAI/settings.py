@@ -104,7 +104,7 @@ WSGI_APPLICATION = 'MAI.wsgi.application'
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql",
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         "NAME": "neuronas",
         "USER": "postgres",
         "PASSWORD": "R@ms2002",
