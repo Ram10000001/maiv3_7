@@ -40,26 +40,28 @@
 {% endblock 'contenido_main' %}
 
 {% block 'contenido_section' %}
+
+
 <div class="button-pocition" id='about'>
     <div class="card">
         <div class="face front">
             <img loading="lazy" src="../../static/img/imgAlumnos.jfif" alt="">
             <h3>ALUMNOS</h3>
         </div>
-        <a href="{% url "usuarios" %}" class="face back">
+        <div class="face back">
+            <h3>PROFESORES</h3>
+            <hr>
+            <div class="lista">
+                <ul>
+                    <li>Realiza exámenes de manera sencilla.</li>
+                </ul>
+            </div>
             <div class="link">
-                <h3>ALUMNOS</h3>
-                <hr>
-                <div class="lista">
-                    <ul>
-                        <li> hola</li>
-                    </ul>
-                </div>
-        </a>
+                <a href="{% url "usuarios" %}" class="face back">SIGUIENTE</a>
+            </div>
+        </div>
     </div>
-</div>
-
-
+</dir>
 <div class="card">
     <div class="face front">
         <img loading="lazy" src="../../static/img/imgProfesores.jfif" alt="">
@@ -75,7 +77,7 @@
             </ul>
         </div>
         <div class="link">
-            <a href="{% url "renderizar_pagina" %}" class="face back">SIGUIEWNTE</a>
+            <a href="{% url "renderizar_pagina" %}" class="face back">SIGUIENTE</a>
         </div>
     </div>
 </div>
@@ -104,5 +106,7 @@
     </div>
 </div>
 {% endblock 'contenido_article' %}
+
+
 {% block 'scripts' %}
 <script src="{% static "js/scripts_index.js" %}"></script>{% endblock 'scripts' %}
