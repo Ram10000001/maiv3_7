@@ -1,0 +1,99 @@
+{% extends "layout/base.html" %}
+
+{% block 'meta' %}
+<meta name="csrf-token" content="{{ csrf_token }}">
+{% endblock 'meta' %}
+
+{% block 'titulo' %}Chat{% endblock 'titulo' %}
+
+{% block 'styles' %}
+{% load static %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+<link rel="stylesheet" href="{% static "css\style_home.css" %}">
+<link rel="stylesheet" href="{% static "css\estilo_chat.css" %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock 'styles' %}
+
+{% block 'contenido_main' %}
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <a href="{% url 'index' %}"><span class="close"><i class="fa fa-arrow-left"></i></span></a>
+    <h1>¡Bienvenido a MAI!</h1>
+    <p>Para hacer que el examen sea más preciso, favor de responder las siguientes preguntas:</p>
+    <form>
+      <div class="form__group">
+        <input type="text" id="nombre" name="nombre" class="form__field" required>
+        <label for="nombre" class="form__label">¿Cuál es tu nombre?</label>
+      </div>
+      <div class="form__group">
+        <input type="text" id="materia" name="materia" class="form__field" required>
+        <label for="materia" class="form__label">¿Sobre qué materia es el examen?</label>
+      </div>
+      <div class="form__group">
+        <input type="text" id="grado" name="grado" class="form__field" required>
+        <label for="grado" class="form__label">¿A qué grado se les aplicara el examen?</label>
+      </div>
+      <div class="form__group">
+        <button type="button" class="btn" id="guardar">Continuar</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock 'contenido_main' %}
+
+{% block 'contenido_section' %}
+<div class="title-chat-container">
+    <div class="header">
+      <h1>MAI te ayuda a generar exámenes sobre <span id="materia-text"></span></h1>
+
+        <div class="content">
+            <div class="full-chat-block">
+
+                <!-- Message Container -->
+                <div class="outer-container">
+                    <div class="chat-container">
+
+                        <!-- Messages -->
+
+                        <div id="chatbox">
+                            <h5 id="chat-timestamp"></h5>
+                            <p id="botStarterMessage" class="botText"><span>Loading...</span></p>
+                        </div>
+
+                        <!-- User input box -->
+                        <div class="chat-bar-input-block">
+                            <div id="userInput">
+                                <textarea id="textInput" class="input-box" type="text" name="msg"
+                                    placeholder="Genera examen con MAI"></textarea>
+                                <p></p>
+                            </div>
+
+                            <div class="chat-bar-icons">
+                                <i id="chat-icon" style="color: white;" class="fa fa-fw fa-send"
+                                    onclick="sendButton()"></i>
+                            </div>
+                        </div>
+
+                        <div id="chat-bar-bottom">
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock 'contenido_section' %}
+
+
+
+{% block 'scripts' %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="module" src="{% static "js\chat.js" %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"></script>
+<script type="module" src="{% static "js\loadanim.js" %}"></script>
+<script type="module" src="{% static "js\htmlconvertere.js" %}"></script>
+<script type="module" src="{% static "js\connectionlib.js" %}"></script>
+{% endblock 'scripts' %}

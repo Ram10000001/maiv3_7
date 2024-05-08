@@ -1,0 +1,29 @@
+{% extends "layout/base.html" %}
+{% block 'styles' %}
+{% load static %}
+<link rel="stylesheet" href="{% static "css/estilo_editor.css" %}">
+{% endblock 'styles' %}
+{% block 'titulo' %}Examen{% endblock 'titulo' %}
+{% block 'contenido_main' %}
+
+<!-- Aquí va tu ventana emergente -->
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <p>Favor de poner el código del examen</p>
+    <input type="text" id="examCode" name="examCode">
+    <a id="backButton" href="{% url "index" %}">Regresar</a>
+    <button id="startExamButton">Hacer Examen</button>
+  </div>
+</div>
+
+<script>
+// Obtén el modal
+var modal = document.getElementById("myModal");
+
+// Cuando la página se carga, abre el modal 
+window.onload = function() {
+  modal.style.display = "block";
+}
+</script>
+
+{% endblock 'contenido_main' %}

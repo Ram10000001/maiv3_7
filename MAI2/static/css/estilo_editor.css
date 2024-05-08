@@ -1,0 +1,82 @@
+/* Navbar */
+#mainNav {
+    background-color: #6b756d;
+    transition: top 0.3s;
+    position: fixed;
+    width: 100%;
+    height: 8%;
+  }
+  
+  #mainNav.navbar-shrink .navbar-brand,
+  #mainNav.navbar-shrink .nav-link {
+    color: aliceblue;
+  }
+  
+  .navbar a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .navbar a:hover {
+    color: white;
+  }
+  
+  .navbar li {
+    margin: 10px;
+    text-align: center;
+    font-size: 25px;
+  }
+  
+  .navbar-nav {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .text-center {
+    color: white;
+  }
+  
+  @media (max-width: 320px) {
+    .navbar .nav-item a {
+      font-size: 20px;
+    }
+  }
+/* Content */
+.edit{
+  margin-top: 6%;
+  background-color: rgba(51,51,51, .6 );
+  height: 150px;
+  font-style: italic;
+}
+.edit h1{
+  position: relative;
+  top: 10%;
+  font-size: 90px;
+  text-align: center;
+  color: white;
+}
+.contenido_examen{
+  position: absolute;
+  
+}
+.contenido_examen h1{
+  background-color: blue;
+  text-align: center;
+}
+
+.question-box {
+  border: 1px solid #000;
+  padding: 20px;
+  margin: 20px 0;
+  /* Elimina la propiedad display: flex; */
+}
+
+/* Estilo para las respuestas */
+.preguntas div {
+  display: block; /* Cada div aparecerá en una nueva línea */
+}
+
+.preguntas input[type="radio"],
+.preguntas label {
+  display: inline-block; /* Cada botón de radio y su etiqueta aparecerán en la misma línea */
+}
