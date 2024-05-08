@@ -18,7 +18,8 @@ from os import stat
 from django.contrib import admin
 from django.urls import include, path
 from django.views.generic import TemplateView
-
+from django.conf import settings
+from django.conf.urls.static import static
 from . import settings
 from . import views
 
@@ -28,10 +29,13 @@ urlpatterns = [
     path("", include('editor.urls')),
     path("", include('usuarios.urls')),
     path("", include('login.urls')),
-    path('', views.index, name= "index"),
+    path('', views.index, name="index"),
     path('accounts/', include('allauth.urls')),
-    path('', TemplateView.as_view(template_name="login.html")), 
+    path('', TemplateView.as_view(template_name="login.html")),
 ]
 
 if settings.DEBUG:
-    urlpatterns += stat(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    # urlpatterns += stat(septtings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns = [
+        # ... the rest of your URLconf goes here ...
+    ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
