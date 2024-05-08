@@ -8,6 +8,7 @@
   src: url(../fonts/Cafe24Decoschool.ttf);
 }
 
+
 /*--- Estilo de navbar --- */
 #mainNav.navbar-shrink {
   background-color: #6b756d;
@@ -51,14 +52,21 @@
 }
 
 .btn {
-  border-radius: 45%;
-  height: 50px;
-  width: 50px;
+  height: 70px;
+  width: 70px;
+  background-color: transparent; 
+  font-family: var(--font-title);
+  border: none;
 }
 
 .btn-primary {
   text-align: center;
 }
+.btn:hover{
+  border: none;
+  background-color: transparent; 
+}
+
 
 .navbar-brand img {
   max-width: 100%;  
@@ -132,10 +140,10 @@
   width: 100%;
   height: 100vh;
   background: url("../img/Pizarra.jpg");
-  background-position: center;
+  background-position: top center;
   background-repeat: no-repeat;
   background-attachment: scroll;
-  background-size: cover;
+  background-size: 100% 100%;
 }
 
 .masthead h1,
@@ -197,6 +205,7 @@
   font-weight: lighter;
   letter-spacing: 2px;
   transition: 1s box-shadow;
+  cursor: pointer;
 }
 
 .card .face {
@@ -244,6 +253,7 @@
   flex-direction: column;
   text-align: center;
   text-decoration: none;
+  justify-content: space-between;
 }
 
 .card .back .link {
@@ -269,15 +279,13 @@
   margin: 10px 40px;
   font-size: xx-large;
 }
-
-.card:hover .front {
+.card.flipped .front {
   transform: perspective(600px) rotateY(180deg);
 }
 
-.card:hover .back {
+.card.flipped .back {
   transform: perspective(600px) rotateY(360deg);
 }
-
 
 
 .card:hover {
@@ -329,18 +337,26 @@
     width: 100%;
     margin-bottom: 20px;
   }
+
+  .card .back {
+    /* Ajusta el tamaño y el estilo del contenido en la parte trasera de la tarjeta aquí */
+  }
 }
+
 @media (max-width: 360px) and (min-width: 320px) {
   .card .front h3 {
     font-size: 40px;
   }
+
   .card .back h3 {
     font-size: 30px;
     margin-top: 5px;
     letter-spacing: 2px;
   }
-  
 
+  .card .back {
+    /* Ajusta el tamaño y el estilo del contenido en la parte trasera de la tarjeta aquí */
+  }
 }
 /*Edicion de utilizar */
 .ti {
