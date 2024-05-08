@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 import os #seagrea la importacion del os para la coneccion de Google
 import dj_database_url
+import psycopg2
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -95,14 +96,10 @@ TEMPLATES = [
 
 
 WSGI_APPLICATION = 'MAI.wsgi.application'
-
-
-
-
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = {
+"""DATABASES = {
     "default": {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         "NAME": "neuronas",
@@ -111,7 +108,12 @@ DATABASES = {
         'HOST': 'localhost',
         "PORT": "5432",
     }
+}"""
+
+DATABASES = {
+    'default': dj_database_url.config(default="postgres://default:h38YrilVTgXK@ep-black-bread-a4f9hfv6.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require")
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
