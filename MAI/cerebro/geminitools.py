@@ -17,7 +17,7 @@ environ.Env.read_env()
 logging.basicConfig(level=logging.ERROR)
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
-genai.configure(api_key=os.getenv('API_KEY_GOOGLE'))  # Usa os.getenv para obtener la clave de API
+genai.configure(api_key=env('API_KEY_GOOGLE'))  # Usa os.getenv para obtener la clave de API
 
 
 uploaded_files = []
