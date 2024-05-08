@@ -34,3 +34,5 @@ if settings.DEBUG:
     # Agrega a urlpatterns, no lo sobrescribas
     urlpatterns += static(settings.STATIC_URL,
                           document_root=settings.STATIC_ROOT)
+
+#ddddddd
