@@ -14,13 +14,10 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from os import stat
 from django.contrib import admin
 from django.urls import include, path
-from django.views.generic import TemplateView
-from django.conf import settings
+from django.conf import settings  # Solo necesitas importar settings una vez
 from django.conf.urls.static import static
-from . import settings
 from . import views
 
 urlpatterns = [
@@ -33,9 +30,7 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
 ]
 
-
 if settings.DEBUG:
-    # urlpatterns += stat(septtings.STATIC_URL, document_root=settings.STATIC_ROOT)
-    urlpatterns = [
-        # ... the rest of your URLconf goes here ...
-    ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    # Agrega a urlpatterns, no lo sobrescribas
+    urlpatterns += static(settings.STATIC_URL,
+                          document_root=settings.STATIC_ROOT)
