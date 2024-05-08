@@ -11,14 +11,16 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
-import os #seagrea la importacion del os para la coneccion de Google
+import os  # seagrea la importacion del os para la coneccion de Google
 import dj_database_url
 import psycopg2
+import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
+env = environ.Env()
+environ.Env.read_env()
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
@@ -52,13 +54,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
-'django.contrib.sites',
+
+    'django.contrib.sites',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
-    
+
     'example',
 
 
@@ -99,7 +101,7 @@ WSGI_APPLICATION = 'MAI.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = {
+"""DATABASES = {
     "default": {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         "NAME": "neuronas",
@@ -108,8 +110,13 @@ DATABASES = {
         'HOST': 'localhost',
         "PORT": "5432",
     }
+}"""
+
+DATABASES = {
+    'default': dj_database_url.parse(env('DATABASE_URL'))
 }
 
+# Vercel
 """DATABASES = {
     'default': dj_database_url.config(default="postgres://default:h38YrilVTgXK@ep-black-bread-a4f9hfv6.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require")
 }"""
@@ -153,14 +160,13 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 STATIC_URL = "static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
-#STATIC_URL = 'static/'
-#STATICFILES_DIRS = [
- #   BASE_DIR / "static",
- #   "/var/www/static/",
-#]
+# STATIC_URL = 'static/'
+# STATICFILES_DIRS = [
+#   BASE_DIR / "static",
+#   "/var/www/static/",
+# ]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
