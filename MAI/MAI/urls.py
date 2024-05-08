@@ -26,13 +26,13 @@ from . import views
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('', views.index, name="index"),
-    path("", include('cerebro.urls')),
-    path("", include('editor.urls')),
-    path("", include('usuarios.urls')),
-    path("", include('login.urls')),
+    path("cerebro/", include('cerebro.urls')),
+    path("editor/", include('editor.urls')),
+    path("usuarios/", include('usuarios.urls')),
+    path("login/", include('login.urls')),
     path('accounts/', include('allauth.urls')),
-    #path('', TemplateView.as_view(template_name="login.html")),
 ]
+
 
 if settings.DEBUG:
     # urlpatterns += stat(septtings.STATIC_URL, document_root=settings.STATIC_ROOT)
