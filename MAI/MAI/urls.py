@@ -25,11 +25,11 @@ from . import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path('', views.index, name="index"),
     path("", include('cerebro.urls')),
     path("", include('editor.urls')),
     path("", include('usuarios.urls')),
     path("", include('login.urls')),
-    path('', views.index, name="index"),
     path('accounts/', include('allauth.urls')),
     path('', TemplateView.as_view(template_name="login.html")),
 ]
