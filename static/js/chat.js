@@ -74,7 +74,6 @@ function processRequest(userText, csrftoken) {
 }
 
 function ventanaFlotante() {
-    let nombre = "profesor";
     var modal = document.getElementById("myModal");
 
     var span = document.getElementsByClassName("close")[0];
@@ -84,13 +83,12 @@ function ventanaFlotante() {
     var form = document.querySelector('form');
     var guardar = document.getElementById('guardar');
 
-    guardar.addEventListener('click', function (event, nombre) {
+    guardar.addEventListener('click', function (event) {
         event.preventDefault();
         var data = new FormData(form);
         var materia = data.get('materia');
         // Guarda el valor del campo de entrada 'nombre' en la variable global 'nombre'
-        var nombre = data.get('nombre');
-
+        var nombre = data.get('nombre') || 'profesor';
         // Selecciona el elemento al que quieres pasar el valor
         var materiaText = document.getElementById('materia-text');
 
