@@ -73,54 +73,46 @@ function processRequest(userText, csrftoken) {
         });
 }
 
+function manejarClickGuardar(event, modal, form) {
+    event.preventDefault();
+    var data = new FormData(form);
+    var materia = data.get('materia') || '';
+    var nombre = data.get('nombre') || 'profesor';
+    var materiaText = document.getElementById('materia-text');
 
-let nombre = "";
+    materiaText.textContent = materia;
+
+    modal.style.display = "none";
+    firstBotMessage(nombre);
+
+    fetch('/enviarPrompt/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': getCookie('csrftoken')
+        },
+        body: JSON.stringify({ materia: materia, nombre: nombre }),
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+}
+
 function ventanaFlotante() {
     var modal = document.getElementById("myModal");
-
+    var form = document.querySelector('form');
     var span = document.getElementsByClassName("close")[0];
+    var guardar = document.getElementById('guardar');
+    var fields = document.getElementsByClassName('form__field');
 
     modal.style.display = "block";
-
-    var form = document.querySelector('form');
-    var guardar = document.getElementById('guardar');
-
     guardar.addEventListener('click', function (event) {
-        event.preventDefault();
-        var data = new FormData(form);
-        var materia = data.get('materia');
-        // Guarda el valor del campo de entrada 'nombre' en la variable global 'nombre'
-        var nombre = data.get('nombre');
-
-        // Selecciona el elemento al que quieres pasar el valor
-        var materiaText = document.getElementById('materia-text');
-
-        // Asigna el valor al elemento
-        materiaText.textContent = materia;
-
-        // Cierra la ventana modal
-        modal.style.display = "none";
-        firstBotMessage();
-
-        // Enviar una solicitud POST a la vista Django
-        /*fetch('/enviar/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRFToken': getCookie('csrftoken')
-            },
-            body: JSON.stringify({ materia: materia }),
-        })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Success:', data);
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });*/
+        manejarClickGuardar(event, modal, form);
     });
-
-    var fields = document.getElementsByClassName('form__field');
 
     for (var i = 0; i < fields.length; i++) {
         fields[i].addEventListener('input', function () {
@@ -134,9 +126,8 @@ function ventanaFlotante() {
 }
 
 
-
 // Gets the first message
-function firstBotMessage() {
+function firstBotMessage(nombre) {
     let firstMessage = "Hola, " + nombre + ". ¿En qué puedo ayudarte?";
     document.getElementById("botStarterMessage").innerHTML = '<p class="botText"><span>' + firstMessage + '</span></p>';
     let time = getTime();
