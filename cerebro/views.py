@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import Pregunta
 from django.http import JsonResponse
-#from .corpus import tous
+# from .corpus import tous
 from .geminitools import procesar_preg
 from .prompt import procesarDatos
 import json
@@ -29,14 +29,14 @@ def enviarPrompt(request):  # Envia las variables materia y grado al prompt
         data = json.loads(request.body)
         materia = data.get('materia')
         nombre = data.get('nombre')
-        procesarDatos(materia,nombre)
+        procesarDatos(materia, nombre)
         return JsonResponse({'status': 'ok'})
     else:
         return JsonResponse({'status': 'bad request'}, status=400)
 
 
 def renderizar_pagina(request):
-    #tous()
+    # tous()
     return render(request, "cerebro/res.html", {})
 
 
