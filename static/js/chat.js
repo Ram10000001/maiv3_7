@@ -1,9 +1,9 @@
 import { showLoadingAnimation, hideLoadingAnimation } from "./loadanim.js";
 import { convertirExamen } from "./htmlconverter.js"
 import { crearExamenJson } from './claseexamen.js';
+import { ventanaFlotante } from "./ventanaf.js";
 
-
-function getCookie(name) {
+export function getCookie(name) {
     let cookieValue = null;
     if (document.cookie && document.cookie !== '') {
         const cookies = document.cookie.split(';');
@@ -19,7 +19,7 @@ function getCookie(name) {
     return cookieValue;
 }
 
-function getTime() {
+export function getTime() {
     let today = new Date();
     let hours = today.getHours();  // Declare 'hours' with 'let'
     let minutes = today.getMinutes();  // Declare 'minutes' with 'let'
@@ -73,67 +73,14 @@ function processRequest(userText, csrftoken) {
         });
 }
 
-function manejarClickGuardar(event, modal, form) {
-    event.preventDefault();
-    var data = new FormData(form);
-    var materia = data.get('materia') || '';
-    var nombre = data.get('nombre') || 'profesor';
-    var materiaText = document.getElementById('materia-text');
-
-    materiaText.textContent = materia;
-
-    modal.style.display = "none";
-    firstBotMessage(nombre);
-
-    fetch('/cerebro/enviarPrompt/', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRFToken': getCookie('csrftoken')
-        },
-        body: JSON.stringify({ materia: materia, nombre: nombre }),
-    })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Success:', data);
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-        });
-}
-
-function ventanaFlotante() {
-    var modal = document.getElementById("myModal");
-    var form = document.querySelector('form');
-    var span = document.getElementsByClassName("close")[0];
-    var guardar = document.getElementById('guardar');
-    var fields = document.getElementsByClassName('form__field');
-
-    modal.style.display = "block";
-    guardar.addEventListener('click', function (event) {
-        manejarClickGuardar(event, modal, form);
-    });
-
-    for (var i = 0; i < fields.length; i++) {
-        fields[i].addEventListener('input', function () {
-            if (this.value) {
-                this.classList.add('form__field--has-value');
-            } else {
-                this.classList.remove('form__field--has-value');
-            }
-        });
-    }
-}
-
-
 // Gets the first message
-function firstBotMessage(nombre) {
+/*function firstBotMessage(nombre) {
     let firstMessage = "Hola, " + nombre + ". ¿En qué puedo ayudarte?";
     document.getElementById("botStarterMessage").innerHTML = '<p class="botText"><span>' + firstMessage + '</span></p>';
     let time = getTime();
     $("#chat-timestamp").append(time);
     document.getElementById("userInput").scrollIntoView(false);
-}
+}*/
 
 window.onload = ventanaFlotante;
 
