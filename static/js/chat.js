@@ -40,7 +40,7 @@ function sendAjaxRequest(csrftoken) {
     hideLoadingAnimation();
     return new Promise((resolve, reject) => {
         $.ajax({
-            url: '/recibir/',  // La URL de tu vista uwu
+            url: '/cerebro/recibir/',  // La URL de tu vista uwu
             type: 'GET',
             headers: { 'X-CSRFToken': csrftoken },
             success: function (data) {
@@ -55,7 +55,7 @@ function sendAjaxRequest(csrftoken) {
 
 function processRequest(userText, csrftoken) {
     $.ajax({
-        url: '/enviar/',
+        url: '/cerebro/enviar/',
         type: 'POST',
         data: { 'userText': userText },
         headers: { 'X-CSRFToken': csrftoken }
@@ -85,7 +85,7 @@ function manejarClickGuardar(event, modal, form) {
     modal.style.display = "none";
     firstBotMessage(nombre);
 
-    fetch('/enviarPrompt/', {
+    fetch('/cerebro/enviarPrompt/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
