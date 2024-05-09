@@ -73,9 +73,8 @@ function processRequest(userText, csrftoken) {
         });
 }
 
-
-let nombre = "";
 function ventanaFlotante() {
+    let nombre = "";
     var modal = document.getElementById("myModal");
 
     var span = document.getElementsByClassName("close")[0];
@@ -100,7 +99,7 @@ function ventanaFlotante() {
 
         // Cierra la ventana modal
         modal.style.display = "none";
-        firstBotMessage();
+        firstBotMessage(nombre);
 
         // Enviar una solicitud POST a la vista Django
         /*fetch('/enviar/', {
@@ -136,7 +135,7 @@ function ventanaFlotante() {
 
 
 // Gets the first message
-function firstBotMessage() {
+function firstBotMessage(nomnbre) {
     let firstMessage = "Hola, " + nombre + ". ¿En qué puedo ayudarte?";
     document.getElementById("botStarterMessage").innerHTML = '<p class="botText"><span>' + firstMessage + '</span></p>';
     let time = getTime();
