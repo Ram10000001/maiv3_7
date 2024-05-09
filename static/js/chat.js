@@ -87,7 +87,7 @@ window.onload = ventanaFlotante;
 //formatea el contenido del chat para moverlo a una nueva pagina HTML
 function formatBubbleChat(div) {
     let editLink = document.createElement('a'); // Crear un nuevo elemento a
-    editLink.href = '../editor?text=' + encodeURIComponent(div.innerHTML); // Aquí puedes poner la URL a la que quieres que lleve el enlace "Editar"
+    editLink.href = '/editor/editor?text=' + encodeURIComponent(div.innerHTML); // Aquí puedes poner la URL a la que quieres que lleve el enlace "Editar"
     editLink.textContent = 'Editar';
     editLink.className = 'edit-link';
     div.appendChild(editLink); // Añadir el enlace "Editar" al div
