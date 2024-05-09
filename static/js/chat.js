@@ -133,7 +133,7 @@ function ventanaFlotante() {
 
 
 // Gets the first message
-function firstBotMessage(nomnbre) {
+function firstBotMessage(nombre) {
     let firstMessage = "Hola, " + nombre + ". ¿En qué puedo ayudarte?";
     document.getElementById("botStarterMessage").innerHTML = '<p class="botText"><span>' + firstMessage + '</span></p>';
     let time = getTime();
