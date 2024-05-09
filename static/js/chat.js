@@ -84,7 +84,7 @@ function ventanaFlotante() {
     var form = document.querySelector('form');
     var guardar = document.getElementById('guardar');
 
-    guardar.addEventListener('click', function (event) {
+    guardar.addEventListener('click', function (event, nombre) {
         event.preventDefault();
         var data = new FormData(form);
         var materia = data.get('materia');
