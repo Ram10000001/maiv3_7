@@ -74,7 +74,7 @@ function processRequest(userText, csrftoken) {
 }
 
 function ventanaFlotante() {
-    let nombre = "";
+    let nombre = "profesor";
     var modal = document.getElementById("myModal");
 
     var span = document.getElementsByClassName("close")[0];
