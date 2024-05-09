@@ -73,10 +73,10 @@ function processRequest(userText, csrftoken) {
         });
 }
 
-function manejarClickGuardar(event) {
+function manejarClickGuardar(event, modal, form) {
     event.preventDefault();
     var data = new FormData(form);
-    var materia = data.get('materia');
+    var materia = data.get('materia') || '';
     var nombre = data.get('nombre') || 'profesor';
     var materiaText = document.getElementById('materia-text');
 
@@ -85,13 +85,13 @@ function manejarClickGuardar(event) {
     modal.style.display = "none";
     firstBotMessage(nombre);
 
-    /*fetch('/enviar/', {
+    fetch('/enviarPrompt/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
             'X-CSRFToken': getCookie('csrftoken')
         },
-        body: JSON.stringify({ materia: materia }),
+        body: JSON.stringify({ materia: materia, nombre: nombre }),
     })
         .then(response => response.json())
         .then(data => {
@@ -99,20 +99,20 @@ function manejarClickGuardar(event) {
         })
         .catch((error) => {
             console.error('Error:', error);
-        });*/
+        });
 }
 
 function ventanaFlotante() {
     var modal = document.getElementById("myModal");
-    var span = document.getElementsByClassName("close")[0];
     var form = document.querySelector('form');
+    var span = document.getElementsByClassName("close")[0];
     var guardar = document.getElementById('guardar');
     var fields = document.getElementsByClassName('form__field');
 
     modal.style.display = "block";
-    guardar.addEventListener('click', manejarClickGuardar);
-
-
+    guardar.addEventListener('click', function (event) {
+        manejarClickGuardar(event, modal, form);
+    });
 
     for (var i = 0; i < fields.length; i++) {
         fields[i].addEventListener('input', function () {
@@ -124,7 +124,6 @@ function ventanaFlotante() {
         });
     }
 }
-
 
 
 // Gets the first message
