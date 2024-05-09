@@ -73,51 +73,46 @@ function processRequest(userText, csrftoken) {
         });
 }
 
+function manejarClickGuardar(event) {
+    event.preventDefault();
+    var data = new FormData(form);
+    var materia = data.get('materia');
+    var nombre = data.get('nombre') || 'profesor';
+    var materiaText = document.getElementById('materia-text');
+
+    materiaText.textContent = materia;
+
+    modal.style.display = "none";
+    firstBotMessage(nombre);
+
+    /*fetch('/enviar/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': getCookie('csrftoken')
+        },
+        body: JSON.stringify({ materia: materia }),
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });*/
+}
+
 function ventanaFlotante() {
     var modal = document.getElementById("myModal");
-
     var span = document.getElementsByClassName("close")[0];
-
-    modal.style.display = "block";
-
     var form = document.querySelector('form');
     var guardar = document.getElementById('guardar');
-
-    guardar.addEventListener('click', function (event) {
-        event.preventDefault();
-        var data = new FormData(form);
-        var materia = data.get('materia');
-        // Guarda el valor del campo de entrada 'nombre' en la variable global 'nombre'
-        var nombre = data.get('nombre') || 'profesor';
-        // Selecciona el elemento al que quieres pasar el valor
-        var materiaText = document.getElementById('materia-text');
-
-        // Asigna el valor al elemento
-        materiaText.textContent = materia;
-
-        // Cierra la ventana modal
-        modal.style.display = "none";
-        firstBotMessage(nombre);
-
-        // Enviar una solicitud POST a la vista Django
-        /*fetch('/enviar/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRFToken': getCookie('csrftoken')
-            },
-            body: JSON.stringify({ materia: materia }),
-        })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Success:', data);
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });*/
-    });
-
     var fields = document.getElementsByClassName('form__field');
+
+    modal.style.display = "block";
+    guardar.addEventListener('click', manejarClickGuardar);
+
+
 
     for (var i = 0; i < fields.length; i++) {
         fields[i].addEventListener('input', function () {
