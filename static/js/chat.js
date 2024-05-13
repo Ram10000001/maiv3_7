@@ -82,6 +82,7 @@ function processRequest(userText, csrftoken) {
 }
 
 window.onload = ventanaFlotante;
+window.sendButton = sendButton;
 
 //formatea el contenido del chat para moverlo a una nueva pagina HTML
 function formatBubbleChat(div) {
@@ -148,7 +149,7 @@ function buttonSendText(sampleText) {
     // }, 1000)
 }
 
-function sendButton() {
+export function sendButton() {
     var texto = document.getElementById("textInput").value;
     if (texto) {
         getResponse();

@@ -1,7 +1,7 @@
 import { getCookie, firstBotMessage } from "./chat.js"
 
 function enviarAPrompt(materia, nombre) {
-    fetch('/cerebro/enviarPrompt/', {
+    fetch('/cerebro/enviarAPrompt/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
