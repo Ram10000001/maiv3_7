@@ -73,15 +73,6 @@ function processRequest(userText, csrftoken) {
         });
 }
 
-// Gets the first message
-/*function firstBotMessage(nombre) {
-    let firstMessage = "Hola, " + nombre + ". ¿En qué puedo ayudarte?";
-    document.getElementById("botStarterMessage").innerHTML = '<p class="botText"><span>' + firstMessage + '</span></p>';
-    let time = getTime();
-    $("#chat-timestamp").append(time);
-    document.getElementById("userInput").scrollIntoView(false);
-}*/
-
 window.onload = ventanaFlotante;
 
 //formatea el contenido del chat para moverlo a una nueva pagina HTML
