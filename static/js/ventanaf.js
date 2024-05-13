@@ -1,6 +1,6 @@
 import { getCookie, firstBotMessage } from "./chat.js"
 
-function enviarPrompt(materia, nombre) {
+function enviarAPrompt(materia, nombre) {
     fetch('/cerebro/enviarPrompt/', {
         method: 'POST',
         headers: {
@@ -33,7 +33,7 @@ function manejarClickGuardar(event, modal, form) {
 
     modal.style.display = "none";
     firstBotMessage(nombre);    //El primer mensaje que envia el bot
-    enviarPrompt(materia, nombre);   //Aqui se envian las variables a la vista a views.py
+    enviarAPrompt(materia, nombre);   //Aqui se envian las variables a la vista a views.py
 }
 
 export function ventanaFlotante() {

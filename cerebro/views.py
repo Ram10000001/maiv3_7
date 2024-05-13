@@ -24,7 +24,7 @@ def recibir(request):  # Obtiene la ultima respuesta de Gemini guardada en la BD
         return JsonResponse({'error': 'Método no permitido'}, status=405)
 
 
-def enviarPrompt(request):  # Envia las variables materia y grado al prompt
+def enviarAPrompt(request):  # Envia las variables materia y grado al prompt
     if request.method == 'POST':
         data = json.loads(request.body)
         materia = data.get('materia')
