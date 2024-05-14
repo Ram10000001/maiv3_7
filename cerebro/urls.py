@@ -6,5 +6,5 @@ urlpatterns = [
     path('enviar/', views.enviar, name="enviar"),
     path('recibir/', views.recibir, name="recibir"),
     path("borrar/", views.borrar, name="borrar"),
-    path('enviarPrompt/', views.enviarPrompt, name="enviarPrompt"),
+    path('enviarAPrompt/', views.enviarAPrompt, name="enviarAPrompt"),
 ]

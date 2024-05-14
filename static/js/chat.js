@@ -36,6 +36,14 @@ export function getTime() {
     return time;
 }
 
+export function firstBotMessage(nombre) {
+    let firstMessage = "Hola, " + nombre + ". ¿En qué puedo ayudarte?";
+    document.getElementById("botStarterMessage").innerHTML = '<p class="botText"><span>' + firstMessage + '</span></p>';
+    let time = getTime();
+    $("#chat-timestamp").append(time);
+    document.getElementById("userInput").scrollIntoView(false);
+}
+
 function sendAjaxRequest(csrftoken) {
     hideLoadingAnimation();
     return new Promise((resolve, reject) => {
@@ -73,16 +81,8 @@ function processRequest(userText, csrftoken) {
         });
 }
 
-// Gets the first message
-/*function firstBotMessage(nombre) {
-    let firstMessage = "Hola, " + nombre + ". ¿En qué puedo ayudarte?";
-    document.getElementById("botStarterMessage").innerHTML = '<p class="botText"><span>' + firstMessage + '</span></p>';
-    let time = getTime();
-    $("#chat-timestamp").append(time);
-    document.getElementById("userInput").scrollIntoView(false);
-}*/
-
 window.onload = ventanaFlotante;
+window.sendButton = sendButton;
 
 //formatea el contenido del chat para moverlo a una nueva pagina HTML
 function formatBubbleChat(div) {
@@ -106,8 +106,6 @@ function showModelResponse(botResponse) {
     //let responseText = processusExam(botResponse);
     let test = convertirObjeto(botResponse);
     let responseText = convertirExamen(test);
-    console.log(responseText);
-
     let chatbox = document.getElementById('chatbox');
     let div = document.createElement('div'); // Crear un nuevo elemento div para la burbuja de chat
     let p = document.createElement('p'); // Crear un nuevo elemento p para el texto del chat
@@ -151,7 +149,7 @@ function buttonSendText(sampleText) {
     // }, 1000)
 }
 
-function sendButton() {
+export function sendButton() {
     var texto = document.getElementById("textInput").value;
     if (texto) {
         getResponse();

@@ -1,8 +1,7 @@
-import { getTime } from "./chat.js"
-import { getCookie } from "./chat.js"
+import { getCookie, firstBotMessage } from "./chat.js"
 
-function enviarPrompt(materia, nombre, grado) {
-    fetch('/cerebro/enviarPrompt/', {
+function enviarAPrompt(materia, nombre) {
+    fetch('/cerebro/enviarAPrompt/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -10,13 +9,13 @@ function enviarPrompt(materia, nombre, grado) {
         },
         body: JSON.stringify({ materia: materia, nombre: nombre, grado: grado }),
     })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Success:', data);
-    })
-    .catch((error) => {
-        console.error('Error:', error);
-    });
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
 }
 
 function manejarClickGuardar(event, modal, form) {
@@ -26,13 +25,16 @@ function manejarClickGuardar(event, modal, form) {
     var nombre = data.get('nombre') || 'profesor';
     var grado = data.get('grado') || '';
     var materiaText = document.getElementById('materia-text');
-    var gradoText = document.getElementById('grado-text');
 
-    materiaText.textContent = materia;
-    gradoText.textContent = grado; 
+    if (materia === '') {
+        materiaText.textContent = ' cualquier materia';
+    } else {
+        materiaText.textContent = materia;
+    }
+
     modal.style.display = "none";
-    firstBotMessage(nombre);
-    enviarPrompt(materia,nombre, grado);
+    firstBotMessage(nombre);    //El primer mensaje que envia el bot
+    enviarAPrompt(materia, nombre);   //Aqui se envian las variables a la vista a views.py
 }
 
 export function ventanaFlotante() {
@@ -63,11 +65,3 @@ export function ventanaFlotante() {
     }
 }
 
-
-function firstBotMessage(nombre) {
-    let firstMessage = "Hola, " + nombre + ". ¿En qué puedo ayudarte?";
-    document.getElementById("botStarterMessage").innerHTML = '<p class="botText"><span>' + firstMessage + '</span></p>';
-    let time = getTime();
-    $("#chat-timestamp").append(time);
-    document.getElementById("userInput").scrollIntoView(false);
-}

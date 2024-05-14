@@ -6,10 +6,9 @@ import logging
 import random
 from .jsontools import eliminar_cadenas
 from google.api_core.exceptions import InternalServerError
-import os
-#from dotenv import load_dotenv  # Importa la función load_dotenv
+# from dotenv import load_dotenv  # Importa la función load_dotenv
 import environ
-#load_dotenv()  # Carga las variables de entorno desde el archivo .env
+# load_dotenv()  # Carga las variables de entorno desde el archivo .env
 
 env = environ.Env()
 environ.Env.read_env()
@@ -17,7 +16,8 @@ environ.Env.read_env()
 logging.basicConfig(level=logging.ERROR)
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
-genai.configure(api_key=env('API_KEY_GOOGLE'))  # Usa os.getenv para obtener la clave de API
+# Usa os.getenv para obtener la clave de API
+genai.configure(api_key=env('API_KEY_GOOGLE'))
 
 
 uploaded_files = []
@@ -100,7 +100,8 @@ def erroresJSON(logger, userTextCopy, respuesta):
 
 
 def revisar_JSON(userText: str):
-    userTextCopy = userText + ' Genera un examen en formato JSON usando el siguiente formato ' + prompt_parts
+    userTextCopy = userText + ' Genera un examen en formato JSON usando el siguiente formato ' + \
+        prompt_parts + varibalesVFCopy
     intentos, num_max_int = 0, 5
     respuesta = None
     mensajes = ['Arregla el fromato JSON del examen como en el ejemplo: ', 'El formato del examen está mal arreglalo: ',
@@ -125,11 +126,12 @@ def revisar_JSON(userText: str):
     return respuesta
 
 
-def procesar_preg(userText):  # Procesa la pregunta primero para ver como reacciona el modelo
+# Procesa la pregunta primero para ver como reacciona el modelo
+def procesar_preg(userText, variablesVF):
+    global varibalesVFCopy
+    varibalesVFCopy = variablesVF
+    
     respuesta = revisar_JSON(userText)
     # Una vez procesada la respuesta, se guarda la pregunta del usuario y la respuesta del modelo
     Pregunta.objects.create(role="user", parts=userText)
     Pregunta.objects.create(role="model", parts=respuesta)
-
-
-
