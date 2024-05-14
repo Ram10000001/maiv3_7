@@ -11,19 +11,23 @@
     <div class="contenido_examen examen">
         <!-- Aquí se renderiza cada pregunta como HTML seguro -->
         {% for question in questions %}
-            {% if forloop.first %}
-                <div class="titulo-instruccion">
-                    {{ question|safe }}
-                </div>
-            {% else %}
-                <div class="question-box preguntas">
-                    {{ question|safe }}
-                    <hr>
-                    <a href="../editar?text={{ question }}">Editar</a>
-                    <a href="../eliminar?text={{ question }}">Eliminar</a>
-                </div>
-            {% endif %}
+        <div class="pregunta-estilo">
+            <div class="titulo-instruccion">
+                {{ question|safe }}
+            
+                <a href="../editar?text={{ question }}">Editar</a>
+                <a href="../eliminar?text={{ question }}">Eliminar</a>
+            </div>
+            </div>
+        </div>
         {% endfor %}
     </div>
 </div>
 {% endblock 'contenido_main' %}
+
+
+
+{% block 'scripts' %}
+
+<script type="module" src="{% static "js\editar" %}"></script>
+{% endblock 'scripts' %}

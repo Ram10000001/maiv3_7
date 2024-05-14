@@ -1,14 +1,14 @@
 import { getTime } from "./chat.js"
 import { getCookie } from "./chat.js"
 
-function enviarPrompt(materia, nombre) {
+function enviarPrompt(materia, nombre, grado) {
     fetch('/cerebro/enviarPrompt/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
             'X-CSRFToken': getCookie('csrftoken')
         },
-        body: JSON.stringify({ materia: materia, nombre: nombre }),
+        body: JSON.stringify({ materia: materia, nombre: nombre, grado: grado }),
     })
     .then(response => response.json())
     .then(data => {
@@ -24,12 +24,15 @@ function manejarClickGuardar(event, modal, form) {
     var data = new FormData(form);
     var materia = data.get('materia') || '';
     var nombre = data.get('nombre') || 'profesor';
+    var grado = data.get('grado') || '';
     var materiaText = document.getElementById('materia-text');
+    var gradoText = document.getElementById('grado-text');
 
     materiaText.textContent = materia;
+    gradoText.textContent = grado; 
     modal.style.display = "none";
     firstBotMessage(nombre);
-    enviarPrompt(materia,nombre);
+    enviarPrompt(materia,nombre, grado);
 }
 
 export function ventanaFlotante() {
@@ -44,6 +47,11 @@ export function ventanaFlotante() {
         manejarClickGuardar(event, modal, form);
     });
 
+    // Agregar evento de click al botón de cierre
+    span.addEventListener('click', function() {
+        modal.style.display = "none";
+    });
+
     for (var i = 0; i < fields.length; i++) {
         fields[i].addEventListener('input', function () {
             if (this.value) {
@@ -54,6 +62,7 @@ export function ventanaFlotante() {
         });
     }
 }
+
 
 function firstBotMessage(nombre) {
     let firstMessage = "Hola, " + nombre + ". ¿En qué puedo ayudarte?";

@@ -64,19 +64,12 @@
   text-align: center;
 }
 
-.question-box {
+.pregunta-box {
   border: 1px solid #000;
   padding: 20px;
   margin: 20px 0;
-  /* Elimina la propiedad display: flex; */
 }
 
-/* Estilo para las respuestas */
-.preguntas div {
-  display: block; /* Cada div aparecerá en una nueva línea */
-}
 
-.preguntas input[type="radio"],
-.preguntas label {
-  display: inline-block; /* Cada botón de radio y su etiqueta aparecerán en la misma línea */
-}
+
+
