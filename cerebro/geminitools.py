@@ -130,7 +130,7 @@ def revisar_JSON(userText: str):
 def procesar_preg(userText, variablesVF):
     global varibalesVFCopy
     varibalesVFCopy = variablesVF
-
+    
     respuesta = revisar_JSON(userText)
     # Una vez procesada la respuesta, se guarda la pregunta del usuario y la respuesta del modelo
     Pregunta.objects.create(role="user", parts=userText)
