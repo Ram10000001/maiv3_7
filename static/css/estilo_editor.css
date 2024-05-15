@@ -1,6 +1,6 @@
 /* Navbar */
 #mainNav {
-  background-color: #6b756d;
+  background-color: #a7ba00;
   transition: top 0.3s;
   position: fixed;
   width: 100%;
@@ -45,7 +45,7 @@
 /* Content */
 .edit{
 margin-top: 6%;
-background-color: rgba(51,51,51, .6 );
+background-color: rgba(252, 0, 0, 0.6);
 height: 150px;
 font-style: italic;
 }
@@ -61,7 +61,7 @@ position: absolute;
 
 }
 .contenido_examen h1{
-background-color: blue;
+background-color: rgb(255, 0, 0);
 text-align: center;
 }
 
