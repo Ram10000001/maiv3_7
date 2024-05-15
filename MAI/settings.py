@@ -30,8 +30,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY', default='your secret key')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'RENDER' not in os.environ
 
-ALLOWED_HOSTS = ["127.0.0.1", ".vercel.app", ".now.sh", "mai-634u.onrender.com"]
-
+ALLOWED_HOSTS = ["127.0.0.1", ".vercel.app",
+                 ".now.sh", "mai-634u.onrender.com"]
 
 # Here is where you could put it
 SITE_ID = 1
@@ -63,6 +63,7 @@ INSTALLED_APPS = [
 
     'example',
 
+    'storages',
 
 ] + APPS
 
@@ -170,3 +171,23 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Basic Storage configuration for Amazon S3
+
+AWS_STORAGE_BUCKET_NAME = 'mai-static'
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+AWS_S3_FILE_OVERWRITE = False
+
+STORAGES = {
+    # Media file (image) management
+
+    "default": {
+        "BACKEND": "storages.backends.s3boto3.S3StaticStorage",
+    },
+
+    # CSS and JS file management
+
+    "staticfiles": {
+        "BACKEND": "storages.backends.s3boto3.S3StaticStorage",
+    },
+}
