@@ -4,10 +4,14 @@ from urllib.parse import unquote
 import re
 
 def editor(request):
-    text = unquote(request.GET.get('text', ''))  # Obtiene el texto del parámetro de consulta 'text' y lo decodifica
-    questions = text.split('</div><div>')  # Divide el texto en preguntas individuales
+    # Obtiene el texto del parámetro de consulta 'text' y lo decodifica
+    text = unquote(request.GET.get('text', ''))
+    # Divide el texto en preguntas individuales
+    questions = text.split('</div><div>')
 
-    # Agrega la clase 'pregunta-estilo' a los divs con la clase 'pregunta'
-    questions = [re.sub(r'<div class="pregunta', '<div class="pregunta pregunta-box', question) for question in questions]
+    # Crea una lista de objetos de pregunta
+    question_objects = [{'text': question,
+                         'delete_link': '#',
+                         'edit_link': '#'} for question in questions]
 
-    return render(request, 'editor/editor.html', {'questions': questions})
+    return render(request, 'editor/editor.html', {'questions': question_objects})

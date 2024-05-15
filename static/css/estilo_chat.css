@@ -97,22 +97,21 @@
   font-style: italic;
 }
 
-.close::before {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #aaaaaa;
-  font-size: 28px;
-  font-weight: bold;
+.close {
+  font-size: 26px; /* Ajusta esto al tamaño que prefieras */
+  color: rgb(119, 110, 110);
 }
 
-.close:hover::before,
-.close:focus::before {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
+.close:hover {
+  color: rgb(255, 0, 0); 
 }
+
+
+.modal-content p{
+  font-size: 18px;
+margin: auto 30px;
+}
+
 
 
 .modal-content form {
