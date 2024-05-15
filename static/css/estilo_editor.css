@@ -63,7 +63,13 @@
   background-color: blue;
   text-align: center;
 }
-
+/*.titulo-instruccion{
+ position: absolute;
+ top: 10%;
+ justify-content: center;
+ margin: auto 26rem;
+  
+}*/
 .pregunta {
   border: 1px solid #000;
   padding: 20px;

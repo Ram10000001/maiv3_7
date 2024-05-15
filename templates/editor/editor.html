@@ -6,7 +6,6 @@
 {% block 'titulo' %}Edicion de examen{% endblock 'titulo' %}
 
 {% block 'contenido_main' %}
-<main>
     <div class="edit">
         <h1>E D I T O R</h1>
         <div class="contenido_examen examen">
@@ -16,32 +15,12 @@
                 <div class="titulo-instruccion">
                     {{ question.text|safe }}
                 </div>
-                <!-- Aquí se renderiza cada pregunta con su div 'pregunta' y sus botones -->
-                <div class="pregunta">
-                    <!-- Aquí va el contenido de la pregunta -->
-                    <div class="botones">
-                        <a href="#" class="btn btn-primary">Editar</a>
-                        <a href="#" class="btn btn-danger">Eliminar</a>
-                    </div>
-                </div>
             </div>
             {% endfor %}
         </div>
     </div>
-</main>
-
 {% endblock 'contenido_main' %}
 
-
-
-
-
-
-
-
-
-
 {% block 'scripts' %}
-
-<script type="module" src="{% static "js\editar" %}"></script>
+<script type="module" src="{% static "js\editar.js" %}"></script>
 {% endblock 'scripts' %}
