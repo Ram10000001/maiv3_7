@@ -1,7 +1,7 @@
 {% extends "layout/base.html" %}
 {% block 'styles' %}
 {% load static %}
-<link rel="stylesheet" href="{% static "css\estilo_editor.css" %}">
+<link rel="stylesheet" href="{% static "css/estilo_editor.css" %}">
 {% endblock 'styles' %}
 {% block 'titulo' %}Edicion de examen{% endblock 'titulo' %}
 
@@ -11,7 +11,7 @@
     <div class="contenido_examen examen">
         <!-- Aquí se renderiza cada pregunta como HTML seguro -->
         {% for question in questions %}
-        <div class="pregunta-estilo">
+        <div  class="pregunta-estilo">
             <div class="titulo-instruccion">
                 {{ question.text|safe }}
             </div>
@@ -22,5 +22,5 @@
 {% endblock 'contenido_main' %}
 
 {% block 'scripts' %}
-<script type="module" src="{% static " js\editar.js" %}"></script>
+<script type="module" src="{% static " js/editar.js" %}"></script>
 {% endblock 'scripts' %}

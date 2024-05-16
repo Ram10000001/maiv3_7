@@ -45,7 +45,7 @@
 /* Content */
 .edit{
 margin-top: 6%;
-background-color: rgba(252, 0, 0, 0.6);
+background-color: rgba(91, 81, 81, 0.6);
 height: 150px;
 font-style: italic;
 }
@@ -63,7 +63,7 @@ position: absolute;
 
 
 .contenido_examen h1{
-  background-color: #ff2800;
+  background-color: #1900ff;
   text-align: center;
 }
 .pregunta {
