@@ -226,6 +226,35 @@ margin: auto 30px;
   padding: 10px;
   margin-bottom: var(--textbox-size);
 }
+.botText .edit-link {
+  position: absolute;
+  bottom: 0; 
+  right: 70%; 
+  border: 2px solid #ffffff; /* Añade un borde */
+  color: #ffffff; /* Cambia el color del texto */
+  background-color: rgb(225,192,140); /* Añade un color de fondo */
+  padding: 6px 16px; 
+  text-align: center; 
+  text-decoration: none; 
+  display: inline-block;
+  font-size: 20px; 
+  cursor: pointer; 
+  z-index: 1; 
+  margin: 2rem;
+  border-radius: 10px; /* Añade bordes redondeados */
+  box-shadow: 0 0 5px rgba(0,0,0,0.3); /* Añade una sombra */
+}
+
+.botText .edit-link:hover {
+  background-color: #dad003; /* Cambia el color de fondo cuando se pasa el cursor por encima */
+}
+
+.botText .edit-link:active {
+  background-color: #d9d9d9; /* Cambia el color de fondo cuando se hace clic en el botón */
+}
+
+
+
 
 .chat-container {
   height: calc(90% - var(--textbox-size));
@@ -387,11 +416,7 @@ margin: auto 30px;
     top: 0;
   }
 }
-.edit-link {
-  position: absolute;
-  bottom: -5px;
-  color: yellow;
-}
+
 /*
 .pdf-link {
   position: absolute;
