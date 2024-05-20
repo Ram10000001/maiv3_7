@@ -49,6 +49,11 @@ export function processusExam(botResponse) {
 }
 
 function createQuestionElement(pregunta) {
+    let divPreguntas = document.createElement('div');
+    divPreguntas.id = 'stocks';
+    divPreguntas.appendChild(div);
+
+
     let div = document.createElement('div');
     div.classList.add('pregunta'); // Añade la clase común a todas las preguntas
     div.classList.add(pregunta.tipo); // Añade la clase específica del tipo de pregunta
