@@ -115,14 +115,34 @@ function eliminarEtiquetas(str) {
     return str;
 }
 
-
-// Y aquí es donde la usamos en la función generatePDF
 function generatePDF(div) {
-    let pdf = new jsPDF();
+    let pdf = new jsPDF({
+        unit: 'pt', // Unidades en puntos
+        format: ['595.28', '841.89'] // Tamaño de página A4 en puntos
+    });
+
+    // Convertir los márgenes de cm a pt
+    let margenSuperiorInferior = 2.5 * 28.3; // Aproximadamente 70.75 pt
+    let margenIzquierdoDerecho = 3 * 28.3; // Aproximadamente 84.9 pt
+
     let textoSinEtiquetas = eliminarEtiquetas(div.innerHTML);
-    pdf.text(textoSinEtiquetas, 10, 10);
+    let lineas = textoSinEtiquetas.split('\n');
+
+    let y = margenSuperiorInferior;
+    for (let linea of lineas) {
+        if (linea.startsWith('Cultura General')) {
+            pdf.setFontSize(22); // Tamaño de fuente para el título
+            pdf.text(linea, pdf.internal.pageSize.getWidth() / 2, y, { align: 'center' });
+        } else {
+            pdf.setFontSize(12); // Tamaño de fuente para el texto normal
+            pdf.text(linea, margenIzquierdoDerecho, y);
+        }
+        y += 14; // Ajusta este valor para cambiar el espaciado entre líneas
+    }
+
     pdf.save('chat.pdf');
 }
+
 
 
 
