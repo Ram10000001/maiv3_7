@@ -48,12 +48,12 @@ export function processusExam(botResponse) {
     return convertirExamen(data);
 }
 
+// Crear un nuevo elemento div para 'stocks' fuera de la función
+let divPreguntas = document.createElement('div');
+divPreguntas.id = 'stocks';
+
 function createQuestionElement(pregunta) {
-    let divPreguntas = document.createElement('div');
-    divPreguntas.id = 'stocks';
-    divPreguntas.appendChild(div);
-
-
+    // Crear un nuevo elemento div para la pregunta
     let div = document.createElement('div');
     div.classList.add('pregunta'); // Añade la clase común a todas las preguntas
     div.classList.add(pregunta.tipo); // Añade la clase específica del tipo de pregunta
@@ -93,7 +93,11 @@ function createQuestionElement(pregunta) {
         respuesta.textContent = "Respuesta: " + pregunta.respuesta_correcta;
         div.appendChild(respuesta);
     }
-    return div;
+
+    // Añadir el div de la pregunta al div 'stocks'
+    divPreguntas.appendChild(div);
+
+    return divPreguntas;
 }
 
 

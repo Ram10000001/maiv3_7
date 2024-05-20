@@ -229,7 +229,7 @@ margin: auto 30px;
 .botText .edit-link {
   position: absolute;
   bottom: 0; 
-  right: 70%; 
+  right: 74%; 
   border: 2px solid #ffffff; /* Añade un borde */
   color: #ffffff; /* Cambia el color del texto */
   background-color: rgb(225,192,140); /* Añade un color de fondo */
@@ -240,10 +240,31 @@ margin: auto 30px;
   font-size: 20px; 
   cursor: pointer; 
   z-index: 1; 
-  margin: 2rem;
+  margin: 2rem auto;
   border-radius: 10px; /* Añade bordes redondeados */
   box-shadow: 0 0 5px rgba(0,0,0,0.3); /* Añade una sombra */
 }
+
+.botText .pdf-button {
+  position: absolute;
+  bottom: 0; 
+  right: 80%; /* Ajusta la posición a la derecha para que esté al lado del botón "Editar" */
+  border: 2px solid #ffffff; /* Añade un borde */
+  color: #ffffff; /* Cambia el color del texto */
+  background-color: rgb(255,0,0); /* Añade un color de fondo rojo */
+  padding: 6px 16px; 
+  text-align: center; 
+  text-decoration: none; 
+  display: inline-block;
+  font-size: 20px; 
+  cursor: pointer; 
+  z-index: 1; 
+  margin: 2rem auto;
+  border-radius: 10px; /* Añade bordes redondeados */
+  box-shadow: 0 0 5px rgba(0,0,0,0.3); /* Añade una sombra */
+}
+
+
 
 .botText .edit-link:hover {
   background-color: #dad003; /* Cambia el color de fondo cuando se pasa el cursor por encima */

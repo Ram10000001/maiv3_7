@@ -86,12 +86,46 @@ window.sendButton = sendButton;
 
 //formatea el contenido del chat para moverlo a una nueva pagina HTML
 function formatBubbleChat(div) {
-    let editLink = document.createElement('a'); // Crear un nuevo elemento a
-    editLink.href = '/editor/editor?text=' + encodeURIComponent(div.innerHTML); // Aquí puedes poner la URL a la que quieres que lleve el enlace "Editar"
+    // Crear un nuevo elemento a para el enlace "Editar"
+    let editLink = document.createElement('a');
+    editLink.href = '/editor/editor?text=' + encodeURIComponent(div.innerHTML);
     editLink.textContent = 'Editar';
     editLink.className = 'edit-link';
     div.appendChild(editLink); // Añadir el enlace "Editar" al div
+
+    // Crear un nuevo elemento button para el botón "Generar PDF"
+    let pdfButton = document.createElement('button');
+    pdfButton.onclick = function() { generatePDF(div); }; // Aquí puedes poner la función que genera el PDF
+    pdfButton.textContent = 'PDF';
+    pdfButton.className = 'pdf-button';
+    div.appendChild(pdfButton); // Añadir el botón "Generar PDF" al div
 }
+
+// Aquí es donde definimos la función eliminarEtiquetas
+function eliminarEtiquetas(str) {
+    if ((str===null) || (str===''))
+        return false;
+    else
+        str = str.toString();
+    // Reemplaza las etiquetas </h1> y </p> con saltos de línea
+    str = str.replace(/<\/h1>/g, '\n');
+    str = str.replace(/<\/p>/g, '\n');
+    // Elimina las demás etiquetas HTML
+    str = str.replace(/<[^>]*>/g, '');
+    return str;
+}
+
+
+// Y aquí es donde la usamos en la función generatePDF
+function generatePDF(div) {
+    let pdf = new jsPDF();
+    let textoSinEtiquetas = eliminarEtiquetas(div.innerHTML);
+    pdf.text(textoSinEtiquetas, 10, 10);
+    pdf.save('chat.pdf');
+}
+
+
+
 
 //convierte las preguntas a objetos
 function convertirObjeto(botResponse) {
@@ -106,6 +140,7 @@ function showModelResponse(botResponse) {
     //let responseText = processusExam(botResponse);
     let test = convertirObjeto(botResponse);
     let responseText = convertirExamen(test);
+    console.log(responseText);
     let chatbox = document.getElementById('chatbox');
     let div = document.createElement('div'); // Crear un nuevo elemento div para la burbuja de chat
     let p = document.createElement('p'); // Crear un nuevo elemento p para el texto del chat
