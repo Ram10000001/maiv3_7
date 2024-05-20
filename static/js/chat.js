@@ -109,7 +109,7 @@ function eliminarEtiquetas(str) {
         str = str.toString();
     // Reemplaza las etiquetas </h1> y </p> con saltos de línea
     str = str.replace(/<\/h1>/g, '\n');
-    str = str.replace(/<\/p>/g, '\n');
+    str = str.replace(/<\/p>/g, '\n\n'); // Agrega un salto de línea adicional
     // Elimina las demás etiquetas HTML
     str = str.replace(/<[^>]*>/g, '');
     return str;
@@ -129,19 +129,34 @@ function generatePDF(div) {
     let lineas = textoSinEtiquetas.split('\n');
 
     let y = margenSuperiorInferior;
+    let contadorPregunta = 0;
+    let contadorOpcion = 0;
     for (let linea of lineas) {
         if (linea.startsWith('Cultura General')) {
-            pdf.setFontSize(22); // Tamaño de fuente para el título
+            pdf.setFontSize(20); // Tamaño de fuente para el título
             pdf.text(linea, pdf.internal.pageSize.getWidth() / 2, y, { align: 'center' });
+            y += 14; // Ajusta este valor para cambiar el espaciado entre líneas
+        } else if (linea.startsWith('¿')) {
+            contadorPregunta++;
+            contadorOpcion = 0;
+            pdf.setFontSize(12); // Tamaño de fuente para las preguntas
+            pdf.text(contadorPregunta + '. ' + linea, margenIzquierdoDerecho, y);
+            y += 14; // Ajusta este valor para cambiar el espaciado entre líneas
+        } else if (linea.startsWith('Respuesta:')) {
+            pdf.setFontSize(12); // Tamaño de fuente para las respuestas
+            pdf.text(linea, pdf.internal.pageSize.getWidth() - margenIzquierdoDerecho, y, { align: 'right' });
+            y += 28; // Añade un espacio extra después de cada respuesta
         } else {
-            pdf.setFontSize(12); // Tamaño de fuente para el texto normal
-            pdf.text(linea, margenIzquierdoDerecho, y);
+            contadorOpcion++;
+            pdf.setFontSize(12); // Tamaño de fuente para las opciones
+            pdf.text(String.fromCharCode(96 + contadorOpcion) + ') ' + linea, margenIzquierdoDerecho, y);
+            y += 14; // Ajusta este valor para cambiar el espaciado entre líneas
         }
-        y += 14; // Ajusta este valor para cambiar el espaciado entre líneas
     }
 
     pdf.save('chat.pdf');
 }
+
 
 
 
