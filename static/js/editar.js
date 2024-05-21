@@ -37,8 +37,13 @@ function makeOnClickHandler(pregunta) {
             // Código para guardar la pregunta
         };
 
-        // Añade el contenido de la pregunta y los botones a la ventana modal
-        modalContent.innerHTML = pregunta.innerHTML;
+        // Añade solo el texto de la pregunta a la ventana modal
+        var preguntaTexto = document.createElement('p');
+        preguntaTexto.textContent = pregunta.textContent;
+        preguntaTexto.className = 'texto-ventana';  // Agrega la clase 'texto-ventana'
+        modalContent.appendChild(preguntaTexto);
+
+        // Añade los botones a la ventana modal
         modalContent.appendChild(closeButton);
         modalContent.appendChild(saveButton);
 
@@ -49,7 +54,6 @@ function makeOnClickHandler(pregunta) {
         document.body.appendChild(modal);
     };
 }
-
 
 
 
