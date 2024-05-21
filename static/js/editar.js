@@ -1,38 +1,62 @@
+function makeOnClickHandler(pregunta) {
+    return function() {
+        console.log('makeOnClickHandler llamado con pregunta:', pregunta);
+
+        // Oculta los botones de acción
+        var botonesAccion = document.getElementsByClassName('botonAccion');
+        for (var i = 0; i < botonesAccion.length; i++) {
+            botonesAccion[i].style.display = 'none';
+        }
+
+        // Crea una ventana modal
+        var modal = document.createElement('div');
+        modal.className = 'modal';
+
+        // Crea el contenido de la ventana modal
+        var modalContent = document.createElement('div');
+        modalContent.className = 'modal-content';
+
+        // Crea un botón para cerrar la ventana modal
+        var closeButton = document.createElement('button');
+        closeButton.className = 'closeButton';
+        closeButton.textContent = 'x';
+        closeButton.onclick = function() {
+            // Muestra los botones de acción cuando se cierra la ventana modal
+            for (var i = 0; i < botonesAccion.length; i++) {
+                botonesAccion[i].style.display = '';
+            }
+
+            document.body.removeChild(modal);
+        };
+
+        // Crea un botón para guardar
+        var saveButton = document.createElement('button');
+        saveButton.className = 'saveButton';
+        saveButton.textContent = 'Guardar';
+        saveButton.onclick = function() {
+            // Código para guardar la pregunta
+        };
+
+        // Añade el contenido de la pregunta y los botones a la ventana modal
+        modalContent.innerHTML = pregunta.innerHTML;
+        modalContent.appendChild(closeButton);
+        modalContent.appendChild(saveButton);
+
+        // Añade el contenido de la ventana modal a la ventana modal
+        modal.appendChild(modalContent);
+
+        // Añade la ventana modal al cuerpo del documento
+        document.body.appendChild(modal);
+    };
+}
+
+
+
+
+
 function botonEditar() {
     var preguntas = document.getElementsByClassName('pregunta');
-
-    // Función de fábrica para generar controladores de eventos
-    function makeOnClickHandler(i) {
-        return function() {
-            // Crea una ventana modal
-            var modal = document.createElement('div');
-            modal.style.width = '500px';
-            modal.style.height = '700px';
-            modal.style.backgroundColor = 'white';
-            modal.style.position = 'fixed';
-            modal.style.top = '50%';
-            modal.style.left = '50%';
-            modal.style.transform = 'translate(-50%, -50%)';
-            modal.style.overflow = 'auto';
-            modal.style.padding = '20px';
-            modal.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.1)';
-            modal.style.zIndex = '1000';
-
-            // Crea un botón para cerrar la ventana modal
-            var closeButton = document.createElement('button');
-            closeButton.textContent = 'Cerrar';
-            closeButton.onclick = function() {
-                document.body.removeChild(modal);
-            };
-
-            // Añade el contenido de la pregunta y el botón de cierre a la ventana modal
-            modal.innerHTML = preguntas[i].innerHTML;
-            modal.appendChild(closeButton);
-
-            // Añade la ventana modal al cuerpo del documento
-            document.body.appendChild(modal);
-        };
-    }
+    console.log('botonEditar llamado con preguntas:', preguntas);  // Agrega esta línea
 
     for (var i = 0; i < preguntas.length; i++) {
         var botonEditar = document.createElement('a');
@@ -40,11 +64,12 @@ function botonEditar() {
         botonEditar.textContent = 'Editar';
 
         // Añade funcionalidad al botón
-        botonEditar.onclick = makeOnClickHandler(i);
+        botonEditar.onclick = makeOnClickHandler(preguntas[i]);
 
         preguntas[i].appendChild(botonEditar);
     }
 }
+
 
 function botonBorrar() {
     var preguntas = document.getElementsByClassName('pregunta');
@@ -73,29 +98,12 @@ function moverPreguntas(){
     });
 }
 
-function divPreguntas() {
-    // Obtiene el elemento que contiene las preguntas
-    var contenedorPreguntas = document.querySelector('.pregunta-estilo .titulo-instruccion div div');
 
-    // Crea un nuevo elemento div
-    var nuevoDiv = document.createElement('div');
-
-    // Asigna el id 'examenesuwu' al nuevo div
-    nuevoDiv.id = 'stocks';
-
-    // Mueve todas las preguntas al nuevo div
-    while (contenedorPreguntas.firstChild) {
-        nuevoDiv.appendChild(contenedorPreguntas.firstChild);
-    }
-
-    // Agrega el nuevo div al contenedor de preguntas
-    contenedorPreguntas.appendChild(nuevoDiv);
-}
 
 window.onload = function() {
     botonEditar();
     botonBorrar();
     moverPreguntas();
-    divPreguntas();
+    makeOnClickHandler();
 };
 

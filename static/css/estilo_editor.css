@@ -106,3 +106,58 @@ font-style: italic;
 .pregunta:hover{
   cursor: grab;
 }
+
+/* Estilo de la ventana flotante */
+.modal {
+  position: fixed;
+  z-index: 1; /* Sitúa la ventana modal por encima de todo lo demás en la página */
+  left: 0;
+  top: 0;
+  width: 100%; /* Anchura completa */
+  height: 100%; /* Altura completa */
+  overflow: auto; /* Habilita el desplazamiento si es necesario */
+  background-color: rgba(0,0,0,0.4); /* Color de fondo con opacidad (negro transparente) */
+  display: flex; /* Centra la ventana modal */
+  align-items: center;
+  justify-content: center;
+}
+
+/* Contenido de la ventana modal */
+.modal-content {
+  width: 700px !important; /* Ancho de la ventana modal */
+  height: 500px !important; /* Altura de la ventana modal */
+  background-color: white;
+  padding: 50px;
+  border: 1px solid #888;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+/* Botón de cierre */
+.closeButton {
+  color: rgb(119, 110, 110);
+  background-color: transparent; /* Color de fondo inicialmente transparente */
+  border-style: none;
+  float: right; /* Alinea el botón a la derecha */
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute; /* Posiciona el botón de manera absoluta dentro de la ventana modal */
+  top: 10px; /* Posiciona el botón en la parte superior de la ventana modal */
+  left: 10px; /* Posiciona el botón en la parte izquierda de la ventana modal */
+}
+
+.closeButton:hover {
+  color: red; /* Cambia el color de fondo a rojo cuando se pasa el cursor sobre el botón */
+}
+
+.saveButton {
+  color: white;
+  background-color: green;
+  border: none;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
