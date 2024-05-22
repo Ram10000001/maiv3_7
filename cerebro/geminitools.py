@@ -98,9 +98,9 @@ def erroresJSON(logger, userTextCopy, respuesta):
     logger.error('---MENSAJE MAQUINA:\n' + respuesta)
     logger.error('\n\n')
 
-
+#Cambiar el numero de preguntas 
 def revisar_JSON(userText: str):
-    userTextCopy = userText + ' Genera un examen en formato JSON usando el siguiente formato ' + \
+    userTextCopy = userText + ' Genera un examen en formato JSON de 3 preguntas usando el siguiente formato ' + \
         prompt_parts + varibalesVFCopy
     intentos, num_max_int = 0, 5
     respuesta = None
