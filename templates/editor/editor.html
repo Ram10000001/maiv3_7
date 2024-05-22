@@ -2,8 +2,8 @@
 {% block 'styles' %}
 {% load static %}
 
-<!--<link rel="stylesheet" href="/static/css/estilo_editor.css">-->
-<link rel="stylesheet" href="{% static "css\estilo_editor.css" %}">
+<link rel="stylesheet" href="/static/css/estilo_editor.css">
+<!--<link rel="stylesheet" href="{% static "css\estilo_editor.css" %}">-->
 {% endblock 'styles' %}
 {% block 'titulo' %}Edicion de examen{% endblock 'titulo' %}
 
@@ -26,6 +26,8 @@
 {% block 'scripts' %}
 <!-- Aquí <script type="module" src="{% static "js/editar.js" %}"></script>-->
 <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
-<script type="module" src="{% static "js\editar.js" %}"></script>
+<!--<script type="module" src="{% static "js\editar.js" %}"></script>-->
+<script type="module" src="../../static/js/editar.js"></script>
+
 {% endblock 'scripts' %}
 
