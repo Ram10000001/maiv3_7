@@ -9,9 +9,8 @@
 {% block 'styles' %}
 {% load static %}
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"></script>
-<link rel="stylesheet" href="{% static "css\style_home.css" %}">
+  integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="{% static " css\style_home.css" %}">
 <!--  <link rel="stylesheet" href="{% static "css\estilo_chat.css" %}">-->
 <link rel="stylesheet" href="/static/css/estilo_chat.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -47,45 +46,44 @@
 
 {% block 'contenido_section' %}
 <div class="title-chat-container">
-    <div class="header">
-      <h1>MAI te ayuda a generar exámenes sobre <span id="materia-text"></span></h1>
+  <div class="header">
+    <h1>MAI te ayuda a generar exámenes sobre <span id="materia-text"></span></h1>
 
-        <div class="content">
-            <div class="full-chat-block">
+    <div class="content">
+      <div class="full-chat-block">
 
-                <!-- Message Container -->
-                <div class="outer-container">
-                    <div class="chat-container">
+        <!-- Message Container -->
+        <div class="outer-container">
+          <div class="chat-container">
 
-                        <!-- Messages -->
+            <!-- Messages -->
 
-                        <div id="chatbox">
-                            <h5 id="chat-timestamp"></h5>
-                            <p id="botStarterMessage" class="botText"><span>Loading...</span></p>
-                        </div>
-
-                        <!-- User input box -->
-                        <div class="chat-bar-input-block">
-                            <div id="userInput">
-                                <textarea id="textInput" class="input-box" type="text" name="msg"
-                                    placeholder="Genera examen con MAI"></textarea>
-                                <p></p>
-                            </div>
-
-                            <div class="chat-bar-icons">
-                                <i id="chat-icon" style="color: white;" class="fa fa-fw fa-send"
-                                    onclick="sendButton()"></i>
-                            </div>
-                        </div>
-
-                        <div id="chat-bar-bottom">
-                            <p></p>
-                        </div>
-                    </div>
-                </div>
+            <div id="chatbox">
+              <h5 id="chat-timestamp"></h5>
+              <p id="botStarterMessage" class="botText"><span>Loading...</span></p>
             </div>
+
+            <!-- User input box -->
+            <div class="chat-bar-input-block">
+              <div id="userInput">
+                <textarea id="textInput" class="input-box" type="text" name="msg"
+                  placeholder="Genera examen con MAI"></textarea>
+                <p></p>
+              </div>
+
+              <div class="chat-bar-icons">
+                <i id="chat-icon" style="color: white;" class="fa fa-fw fa-send" onclick="sendButton()"></i>
+              </div>
+            </div>
+
+            <div id="chat-bar-bottom">
+              <p></p>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>
 {% endblock 'contenido_section' %}
 
@@ -95,9 +93,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"></script>
 <!--<script type="module" src="{% static "js\chat.js" %}"></script>-->
-<script type="module" src="../../static/js/chat.js"></script>
-
-<script type="module" src="{% static "js\loadanim.js" %}"></script>
-<script type="module" src="{% static "js\htmlconvertere.js" %}"></script>
-<script type="module" src="{% static "js\ventanaf" %}"></script>
+<script type="module" src="{% static " js\chat.js" %}"></script>
+<script type="module" src="{% static " js\loadanim.js" %}"></script>
+<script type="module" src="{% static " js\htmlconvertere.js" %}"></script>
+<script type="module" src="{% static " js\ventanaf" %}"></script>
 {% endblock 'scripts' %}
