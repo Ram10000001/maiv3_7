@@ -1,4 +1,3 @@
- 
 <!--
  <body>
       <div class="container">
@@ -53,52 +52,48 @@
             <h1>Pregúntale a MAI UwU </h1>
             <div class="content">
                 <div class="full-chat-block">
+                -->
+<!-- Message Container -->
+<div class="outer-container">
+    <div class="chat-container">
 
-                    <!-- Message Container -->
-                    <div class="outer-container">
-                        <div class="chat-container">
+        <!-- Messages -->
+        <div id="chatbox">
+            <h5 id="chat-timestamp"></h5>
+            <p id="botStarterMessage" class="botText"><span>Loading...</span></p>
+        </div>
 
-                            <!-- Messages -->
-                            <div id="chatbox">
-                                <h5 id="chat-timestamp"></h5>
-                                <p id="botStarterMessage" class="botText"><span>Loading...</span></p>
-                            </div>
-                            
-                            {% block "messages" %}
-                            <div class="alert alert-{{ message.tags }}">
-                                {{ message }}
-                            </div>
-                            {% endblock "messages" %}
-                            
+        {% block "messages" %}
+        <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+        </div>
+        {% endblock "messages" %}
 
-                            <!-- User input box -->
-                            <div class="chat-bar-input-block">
-                                <div id="userInput">
-                                    <textarea id="textInput" class="input-box" type="text" name="msg"
-                                        placeholder="Tap 'Enter' to send a message"></textarea>
-                                    <p></p>
-                                </div>
 
-                                <div class="chat-bar-icons">
-                                    <i id="chat-icon" style="color: white;" class="fa fa-fw fa-send"
-                                        onclick="sendButton()"></i>
-                                </div>
-                            </div>
+        <!-- User input box -->
+        <div class="chat-bar-input-block">
+            <div id="userInput">
+                <textarea id="textInput" class="input-box" type="text" name="msg"
+                    placeholder="Tap 'Enter' to send a message"></textarea>
+                <p></p>
+            </div>
 
-                            <div id="chat-bar-bottom">
-                                <p></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="chat-bar-icons">
+                <i id="chat-icon" style="color: white;" class="fa fa-fw fa-send" onclick="sendButton()"></i>
             </div>
         </div>
+
+        <div id="chat-bar-bottom">
+            <p></p>
+        </div>
     </div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="{% static "js\chat.js" %}"></script>
 
 </html>
-
-
--->
