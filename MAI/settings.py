@@ -136,12 +136,6 @@ DATABASES = {
     'default': dj_database_url.parse(env('DATABASE_URL'))
 }
 
-# Vercel
-"""DATABASES = {
-    'default': dj_database_url.config(default="postgres://default:h38YrilVTgXK@ep-black-bread-a4f9hfv6.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require")
-}"""
-
-
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
