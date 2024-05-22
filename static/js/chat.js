@@ -157,11 +157,6 @@ function generatePDF(div) {
     pdf.save('chat.pdf');
 }
 
-
-
-
-
-
 //convierte las preguntas a objetos
 function convertirObjeto(botResponse) {
     let data = JSON.parse(botResponse);
