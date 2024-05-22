@@ -74,10 +74,12 @@ function processRequest(userText, csrftoken) {
             })
             .catch(error => {
                 console.error('Error:', error);
+                hideLoadingAnimation();
             });
     })
         .catch(error => {
             console.error('Error:', error);
+            hideLoadingAnimation();
         });
 }
 
@@ -95,7 +97,7 @@ function formatBubbleChat(div) {
 
     // Crear un nuevo elemento button para el botón "Generar PDF"
     let pdfButton = document.createElement('button');
-    pdfButton.onclick = function() { generatePDF(div); }; // Aquí puedes poner la función que genera el PDF
+    pdfButton.onclick = function () { generatePDF(div); }; // Aquí puedes poner la función que genera el PDF
     pdfButton.textContent = 'PDF';
     pdfButton.className = 'pdf-button';
     div.appendChild(pdfButton); // Añadir el botón "Generar PDF" al div
@@ -103,7 +105,7 @@ function formatBubbleChat(div) {
 
 // Aquí es donde definimos la función eliminarEtiquetas
 function eliminarEtiquetas(str) {
-    if ((str===null) || (str===''))
+    if ((str === null) || (str === ''))
         return false;
     else
         str = str.toString();
