@@ -1,15 +1,17 @@
-:root {
-  --textbox-size: 60px;
+:root{
+  --color-primario: #e0c08d;
+  --color-secundario: #8eaade;
+  --color-terceario: #6b756d;
   --primary: #11998e;
   --secondary: #38ef7d;
-  --white: #fff;
-  --gray: #9b9b9b;
+  --color-fondo: white;
 }
 
 /* Navbar */
 #mainNav {
-  background-color: #6b756d;
+  background-color: var(--color-terceario);
   position: fixed;
+  top: -100;
   width: 100%;
   height: 8%;
 }
@@ -20,32 +22,55 @@
 }
 
 .navbar a {
-  color: white;
+  color: var(--color-fondo);
   text-decoration: none;
 }
 
-.navbar a:hover {
-  color: white;
+.navbar .link-inicio{
+  position: absolute;
+  left: 8%;
 }
+.navbar a:hover {
+  color: var(--color-fondo);
+}
+
 
 .navbar li {
   margin: 10px;
   text-align: center;
   font-size: 25px;
 }
-
 .navbar-nav {
   width: 100%;
   justify-content: space-between;
 }
 
 .text-center {
-  color: white;
+  color: var(--color-fondo);
 }
+
+.btn {
+  height: 70px;
+  width: 70px;
+  background-color: transparent; 
+  font-family: var(--font-title);
+  border: none;
+}
+.navbar-brand {
+  position: absolute;
+  height: 100%;
+  left: 2%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .navbar-brand img {
-  max-width: 100%;  
-  height: auto;
+  max-width: 100%;
+  max-height: 100%;
 }
+
+
 @media (max-width: 900px) and (min-width: 320px) {
   
   #mainNav {
@@ -67,7 +92,8 @@
   }
 }
 
-/* Ventana flotante */
+/*
+venta flotante
 .modal {
   display: none; 
   position: fixed; 
@@ -98,7 +124,7 @@
 }
 
 .close {
-  font-size: 26px; /* Ajusta esto al tamaño que prefieras */
+  font-size: 26px; 
   color: rgb(119, 110, 110);
 }
 
@@ -171,9 +197,9 @@ margin: auto 30px;
 @media only screen and (max-width: 600px) {
   .modal-content {
     width: 90%;
-    height: auto; /* Cambia esto a 'auto' para que el contenido defina la altura */
-    max-height: 80vh; /* Ajusta esto al porcentaje de la altura de la pantalla que prefieras */
-    overflow-y: auto; /* Añade desplazamiento si el contenido es más alto que 'max-height' */
+    height: auto; 
+    max-height: 80vh; 
+    overflow-y: auto; 
   }
   .form__label {
     font-size: .5rem;
@@ -185,7 +211,7 @@ margin: auto 30px;
 
 
 
-/* Chat */
+ Chat 
 .title-chat-container {
   position: absolute;
   left: 0;
@@ -230,9 +256,9 @@ margin: auto 30px;
   position: absolute;
   bottom: 0; 
   right: 74%; 
-  border: 2px solid #ffffff; /* Añade un borde */
-  color: #ffffff; /* Cambia el color del texto */
-  background-color: rgb(225,192,140); /* Añade un color de fondo */
+  border: 2px solid #ffffff; 
+  color: #ffffff; 
+  background-color: rgb(225,192,140); 
   padding: 6px 16px; 
   text-align: center; 
   text-decoration: none; 
@@ -241,18 +267,17 @@ margin: auto 30px;
   cursor: pointer; 
   z-index: 1; 
   margin: 2rem auto;
-  border-radius: 10px; /* Añade bordes redondeados */
-  box-shadow: 0 0 5px rgba(0,0,0,0.3); /* Añade una sombra */
+  border-radius: 10px; 
+  box-shadow: 0 0 5px rgba(0,0,0,0.3); 
 }
 
 .botText .pdf-button {
   position: absolute;
   bottom: 0; 
-  right: 80%; /* Ajusta la posición a la derecha para que esté al lado del botón "Editar" */
-  border: 2px solid #ffffff; /* Añade un borde */
-  color: #ffffff; /* Cambia el color del texto */
-  background-color: rgb(255,0,0); /* Añade un color de fondo rojo */
-  padding: 6px 16px; 
+  right: 80%; 
+  border: 2px solid #ffffff;
+  color: #ffffff; 
+  background-color: rgb(255,0,0); 
   text-align: center; 
   text-decoration: none; 
   display: inline-block;
@@ -260,18 +285,18 @@ margin: auto 30px;
   cursor: pointer; 
   z-index: 1; 
   margin: 2rem auto;
-  border-radius: 10px; /* Añade bordes redondeados */
-  box-shadow: 0 0 5px rgba(0,0,0,0.3); /* Añade una sombra */
+  border-radius: 10px; 
+  box-shadow: 0 0 5px rgba(0,0,0,0.3); 
 }
 
 
 
 .botText .edit-link:hover {
-  background-color: #dad003; /* Cambia el color de fondo cuando se pasa el cursor por encima */
+  background-color: #dad003;
 }
 
 .botText .edit-link:active {
-  background-color: #d9d9d9; /* Cambia el color de fondo cuando se hace clic en el botón */
+  background-color: #d9d9d9; 
 }
 
 
@@ -438,14 +463,6 @@ margin: auto 30px;
   }
 }
 
-/*
-.pdf-link {
-  position: absolute;
-  bottom: -5px;
-  color: red;
-  right: 60px;
-  cursor: pointer; 
-}*/
 .dot {
   height: 50px;
   width: 50px;
@@ -465,7 +482,7 @@ margin: auto 30px;
   50% { background-color: #888; }
 }
 
-/*Elemtos de pregunta emparejamiento*/
+Elemtos de pregunta emparejamiento
 .arrastrable, .objetivo {
   width: 100px;
   height: 100px;
@@ -478,4 +495,79 @@ margin: auto 30px;
   flex-wrap: wrap;
 }
 
+*/
 
+.principal {
+  margin: 6rem;
+  border-radius: 10px;
+  background-color: rgb(255, 235, 235);
+}
+form{
+  margin:6rem;
+}
+.tema{
+  position: relative;
+  left: 25%;
+}
+.form__group {
+  position: relative;
+  padding: 15px 0 0;
+  margin-top: 10px;
+  width: 50%;
+}
+
+.form__field {
+  font-family: inherit;
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid gray;
+  outline: 0;
+  font-size: 1.3rem;
+  color: white;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+
+  &::placeholder {
+    color: transparent;
+  }
+
+  &:placeholder-shown ~ .form__label {
+    font-size: 1.3rem;
+    cursor: text;
+    top: 20px;
+  }
+}
+
+.form__label {
+  position: absolute;
+  top: 7px;
+  display: block;
+  transition: 0.2s;
+  font-size: 1.5rem;
+  color: gray;
+}
+
+.form__field.has-value {
+  padding-bottom: 6px;  
+  font-weight: 700;
+  border-width: 3px;
+  border-image: linear-gradient(to right, var(--primary), var(--secondary));
+  border-image-slice: 1;
+}
+
+.form__field.has-value ~ .form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: var(--primary);
+  font-weight:700;    
+}
+
+  
+/* reset input */
+.form__field{
+  &:required,&:invalid { box-shadow:none; }
+}
