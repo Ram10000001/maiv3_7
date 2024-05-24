@@ -568,24 +568,18 @@ form{
   font-weight:700;    
 }
 
-  
-/* reset input */
 .form__field{
   &:required,&:invalid { box-shadow:none; }
 }
+
 /*input estilo 2*/
 .slide-up {
+  width: 8rem;
   display: inline-block;
-  width: 215px;
-  padding: 10px 0 10px 15px;
-  font-family: "Open Sans", sans;
-  font-weight: 400;
   color: #377D6A;
-  background: #efefef;
-  border: 0;
   border-radius: 3px;
   outline: 0;
-  text-indent: 80px;
+  text-indent: 50px;
   transition: all .3s ease-in-out;
   
   &::-webkit-input-placeholder {
@@ -606,6 +600,7 @@ form{
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px;
     overflow: hidden;
+    transform: translateY(-100%);
 
     &:before,
     &:after {
@@ -617,7 +612,6 @@ form{
       transition: all .3s ease-in-out;
     }
     &:before {
-      
       top: 6px;
       left: 5px;
       right: 5px;
@@ -636,30 +630,4 @@ span:nth-child(1) .slide-up {
 }
 span:nth-child(3) .slide-up {
   text-indent: 125px;
-}
-span:nth-child(1) .slide-up:focus,
-span:nth-child(1) .slide-up:active,
-span:nth-child(3) .slide-up:focus,
-span:nth-child(3) .slide-up:active {
-  text-indent: 0;
-}
-.slide-up:focus,
-.slide-up:active {
-  color: #377D6A;
-  text-indent: 0;
-  background: #fff;
-  
-  &::-webkit-input-placeholder {
-    color: #aaa;
-  }
-  + label {
-    transform: translateY(-100%);
-
-    &:before {
-      border-radius: 5px;
-    }
-    &:after {
-      transform: translateY(100%);
-    }
-  }
 }

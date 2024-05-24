@@ -19,6 +19,7 @@
 {% block 'contenido_main' %}
 <div class="principal">
   <form>
+    
     <div class="tema">
       <div class="form__group">
         <input type="list" id="nombre" list="materias" name="nombre" class="form__field" required
@@ -30,10 +31,14 @@
         </datalist>
       </div>
     </div>
+
     <h1>Tipos de preguntas:</h1>
-    <div class="form__group">
-      <input class="slide-up" id="card" type="text" placeholder="Fund me!" /><label for="card">Credit Card</label>
+    <div class="number-input">
+      <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus">-</button>
+      <input class="slide-up" min="0" name="quantity" value="0" type="number">
+      <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus">+</button>
     </div>
+    
     <div class="form__group">
       <input type="text" id="grado" name="grado" class="form__field" required oninput="checkInput(this)">
       <label for="grado" class="form__label">¿A qué grado se les aplicara el examen?</label>
@@ -53,7 +58,27 @@
     }
   }
 
-
+  function validateInput() {
+    var quantity = document.getElementById('quantity');
+    var value = quantity.value;
+    if (isNaN(value) || value < 0) {
+      quantity.value = 0;
+    }
+  }
+  
+  function increment() {
+    var quantity = document.getElementById('quantity');
+    quantity.value = parseInt(quantity.value) + 1;
+  }
+  
+  function decrement() {
+    var quantity = document.getElementById('quantity');
+    var value = parseInt(quantity.value);
+    if (value > 0) {
+      quantity.value = value - 1;
+    }
+  }
+  
 
 
 
