@@ -21,19 +21,18 @@
   <form>
     <div class="tema">
       <div class="form__group">
-        <input type="text" id="nombre" list="items" name="nombre" class="form__field" required
+        <input type="list" id="nombre" list="materias" name="nombre" class="form__field" required
           oninput="checkInput(this)">
         <label for="nombre" class="form__label">Tema</label>
-        <datalist id="items">
-          <option value="Matematicas">Matemáticas</option>
-          <option value="Español">Español</option>
+        <datalist id="materias">
+          <option data-value=""="Matematicas">Matemáticas</option>
+          <option data-value="Español">Español</option>
         </datalist>
       </div>
     </div>
     <h1>Tipos de preguntas:</h1>
     <div class="form__group">
-      <input type="number" id="materia" name="materia" class="form__field" required oninput="checkInput(this)">
-      <label for="materia" class="form__label">¿Sobre qué materia es el examen?</label>
+      <input class="slide-up" id="card" type="text" placeholder="Fund me!" /><label for="card">Credit Card</label>
     </div>
     <div class="form__group">
       <input type="text" id="grado" name="grado" class="form__field" required oninput="checkInput(this)">
