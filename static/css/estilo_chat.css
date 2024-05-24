@@ -573,61 +573,67 @@ form{
 }
 
 /*input estilo 2*/
-.slide-up {
-  width: 8rem;
+.preguntas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.preguntas span {
+  flex-basis: calc(25% - 10px); /* Asume que quieres 10px de espacio entre los elementos */
+  margin-bottom: 20px; /* Espacio entre las filas */
+}
+@media (max-width: 600px) {
+  .preguntas span {
+    flex-basis: 100%; /* En pantallas pequeñas, los elementos ocuparán toda la fila */
+  }
+}
+
+.balloon {
   display: inline-block;
+  width: 80px;
+  text-align: center;
+  padding: 10px 0 10px 15px;
+  font-family: "Open Sans", sans;
+  font-weight: 400;
   color: #377D6A;
+  background: #fff; /* Mueve esta línea desde .balloon:focus y .balloon:active */
+  border: 0;
   border-radius: 3px;
   outline: 0;
-  text-indent: 50px;
+  text-indent: 0; /* Mueve esta línea desde .balloon:focus y .balloon:active */
   transition: all .3s ease-in-out;
   
-  &::-webkit-input-placeholder {
-    color: #efefef;
-    text-indent: 0;
-    font-weight: 300;
-  }
 
   + label {
     display: inline-block;
-    position: absolute;
-    transform: translateX(0);
-    top: 0;
-    left: 0;
-    padding: 10px 15px;
+    position: relative;
+    left: -110px;
+    top: -50px;
+    padding: 5px 15px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
     text-shadow: 0 1px 0 rgba(19,74,70,.4);
-    transition: all .3s ease-in-out;
-    border-top-left-radius: 3px;
-    border-bottom-left-radius: 3px;
-    overflow: hidden;
-    transform: translateY(-100%);
+    border-radius: 3px;
+    background: rgba(122,184,147,1);
 
-    &:before,
+
+
+    
     &:after {
-      content: "";
       position: absolute;
-      right: 0;
-      left: 0;
-      z-index: -1;
+      content: "";
+      width: 0;
+      height: 0;
+      top: 100%;
+      left: 50%;
+      margin-left: -3px;
+      border-left: 3px solid transparent;
+      border-right: 3px solid transparent;
+      border-top: 4px solid rgba(122,184,147,1); /* Mueve esta línea desde .balloon:focus y .balloon:active */
       transition: all .3s ease-in-out;
     }
-    &:before {
-      top: 6px;
-      left: 5px;
-      right: 5px;
-      bottom: 6px;
-      background: #377D6A; 
-    }
-    &:after {
-      top: 0;
-      bottom: 0;
-      background: #377D6A;
-    }
   }
-}
-span:nth-child(1) .slide-up {
-  text-indent: 105px;
-}
-span:nth-child(3) .slide-up {
-  text-indent: 125px;
 }
