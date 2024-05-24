@@ -1,4 +1,3 @@
- 
 <!--
  <body>
       <div class="container">
@@ -53,193 +52,48 @@
             <h1>Pregúntale a MAI UwU </h1>
             <div class="content">
                 <div class="full-chat-block">
+                -->
+<!-- Message Container -->
+<div class="outer-container">
+    <div class="chat-container">
 
-                    <!-- Message Container -->
-                    <div class="outer-container">
-                        <div class="chat-container">
+        <!-- Messages -->
+        <div id="chatbox">
+            <h5 id="chat-timestamp"></h5>
+            <p id="botStarterMessage" class="botText"><span>Loading...</span></p>
+        </div>
 
-                            <!-- Messages -->
-                            <div id="chatbox">
-                                <h5 id="chat-timestamp"></h5>
-                                <p id="botStarterMessage" class="botText"><span>Loading...</span></p>
-                            </div>
-                            
-                            {% block "messages" %}
-                            <div class="alert alert-{{ message.tags }}">
-                                {{ message }}
-                            </div>
-                            {% endblock "messages" %}
-                            
+        {% block "messages" %}
+        <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+        </div>
+        {% endblock "messages" %}
 
-                            <!-- User input box -->
-                            <div class="chat-bar-input-block">
-                                <div id="userInput">
-                                    <textarea id="textInput" class="input-box" type="text" name="msg"
-                                        placeholder="Tap 'Enter' to send a message"></textarea>
-                                    <p></p>
-                                </div>
 
-                                <div class="chat-bar-icons">
-                                    <i id="chat-icon" style="color: white;" class="fa fa-fw fa-send"
-                                        onclick="sendButton()"></i>
-                                </div>
-                            </div>
+        <!-- User input box -->
+        <div class="chat-bar-input-block">
+            <div id="userInput">
+                <textarea id="textInput" class="input-box" type="text" name="msg"
+                    placeholder="Tap 'Enter' to send a message"></textarea>
+                <p></p>
+            </div>
 
-                            <div id="chat-bar-bottom">
-                                <p></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="chat-bar-icons">
+                <i id="chat-icon" style="color: white;" class="fa fa-fw fa-send" onclick="sendButton()"></i>
             </div>
         </div>
+
+        <div id="chat-bar-bottom">
+            <p></p>
+        </div>
     </div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="{% static "js\chat.js" %}"></script>
 
 </html>
-
-
--->
-
-<!--
-{% block 'contenido_section' %}
-<div class="title-chat-container">
-  <div class="header">
-    <h1>MAI te ayuda a generar exámenes sobre <span id="materia-text"></span></h1>
-
-    <div class="content">
-      <div class="full-chat-block">
-
-        <div class="outer-container">
-          <div class="chat-container">
-
-    
-
-            <div id="chatbox">
-              <h5 id="chat-timestamp"></h5>
-              <p id="botStarterMessage" class="botText"><span>Loading...</span></p>
-            </div>
-
-       
-            <div class="chat-bar-input-block">
-              <div id="userInput">
-                <textarea id="textInput" class="input-box" type="text" name="msg"
-                  placeholder="Genera examen con MAI"></textarea>
-                <p></p>
-              </div>
-
-              <div class="chat-bar-icons">
-                <i id="chat-icon" style="color: white;" class="fa fa-fw fa-send" onclick="sendButton()"></i>
-              </div>
-            </div>
-
-            <div id="chat-bar-bottom">
-              <p></p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-{% endblock 'contenido_section' %}
--->
-
-
-
-{% block 'contenido_main' %}
-<div class="principal">
-
-<form method="post" action="/send/">
-  <div class="opciones-titulo">
-     
-<h2>Materia: </h2>
-  <input type="text" list="items"placeholder="Coloca la materia ">
-  <datalist id="items">
-    <option value="Matematicas">Matematicas</option>
-    <option value="Español">Español</option>
-  </div>
-  <div class="form__group">
-    <input type="text" id="grado" name="grado" class="form__field" required>
-    <label for="grado" class="form__label">¿A qué grado se les aplicara el examen?</label>
-  </div>
-    
-  </datalist>
-</form>
-
-</div>
-{% endblock 'contenido_main' %}
-
-
-{% block 'contenido_main' %}
-<div id="myModal" class="modal">
-  <div class="modal-content">
-    <a href="#"><span class="close"><i class="fa fa-times"></i></span></a>
-    <h1>¡Bienvenido a MAI!</h1>
-    <p>Para hacer que el examen sea más preciso, favor de responder las siguientes preguntas:</p>
-    <form>
-      <div class="form__group">
-        <input type="text" id="nombre" name="nombre" class="form__field" required>
-        <label for="nombre" class="form__label">¿Cuál es tu nombre?</label>
-      </div>
-      <div class="form__group">
-        <input type="text" id="materia" name="materia" class="form__field" required>
-        <label for="materia" class="form__label">¿Sobre qué materia es el examen?</label>
-      </div>
-      <div class="form__group">
-        <input type="text" id="grado" name="grado" class="form__field" required>
-        <label for="grado" class="form__label">¿A qué grado se les aplicara el examen?</label>
-      </div>
-      <div class="form__group">
-        <button type="button" class="btn" id="guardar">Continuar</button>
-      </div>
-    </form>
-  </div>
-</div>
-{% endblock 'contenido_main' %}
-
-<!--
-{% block 'contenido_section' %}
-<div class="title-chat-container">
-  <div class="header">
-    <h1>MAI te ayuda a generar exámenes sobre <span id="materia-text"></span></h1>
-
-    <div class="content">
-      <div class="full-chat-block">
-
-        <div class="outer-container">
-          <div class="chat-container">
-
-    
-
-            <div id="chatbox">
-              <h5 id="chat-timestamp"></h5>
-              <p id="botStarterMessage" class="botText"><span>Loading...</span></p>
-            </div>
-
-       
-            <div class="chat-bar-input-block">
-              <div id="userInput">
-                <textarea id="textInput" class="input-box" type="text" name="msg"
-                  placeholder="Genera examen con MAI"></textarea>
-                <p></p>
-              </div>
-
-              <div class="chat-bar-icons">
-                <i id="chat-icon" style="color: white;" class="fa fa-fw fa-send" onclick="sendButton()"></i>
-              </div>
-            </div>
-
-            <div id="chat-bar-bottom">
-              <p></p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-{% endblock 'contenido_section' %}
--->
