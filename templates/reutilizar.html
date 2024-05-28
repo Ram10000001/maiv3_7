@@ -1,0 +1,107 @@
+<section class="projects-section bg-light" id="projects">
+    <div class="container px-4 px-lg-5">
+        <!-- Featured Project Row-->
+        <div class="row gx-0 mb-4 mb-lg-5 align-items-center">
+            <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" src="assets/img/bg-masthead.jpg" alt="..." /></div>
+            <div class="col-xl-4 col-lg-5">
+                <div class="featured-text text-center text-lg-left">
+                    <h4>Shoreline</h4>
+                    <p class="text-black-50 mb-0">Grayscale is open source and MIT licensed. This means you can use it for any project - even commercial projects! Download it, customize it, and publish your website!</p>
+                </div>
+            </div>
+        </div>
+        <!-- Project One Row-->
+        <div class="row gx-0 mb-5 mb-lg-0 justify-content-center">
+            <div class="col-lg-6"><img class="img-fluid" src="assets/img/demo-image-01.jpg" alt="..." /></div>
+            <div class="col-lg-6">
+                <div class="bg-black text-center h-100 project">
+                    <div class="d-flex h-100">
+                        <div class="project-text w-100 my-auto text-center text-lg-left">
+                            <h4 class="text-white">Misty</h4>
+                            <p class="mb-0 text-white-50">An example of where you can put an image of a project, or anything else, along with a description.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Project Two Row-->
+        <div class="row gx-0 justify-content-center">
+            <div class="col-lg-6"><img class="img-fluid" src="assets/img/demo-image-02.jpg" alt="..." /></div>
+            <div class="col-lg-6 order-lg-first">
+                <div class="bg-black text-center h-100 project">
+                    <div class="d-flex h-100">
+                        <div class="project-text w-100 my-auto text-center text-lg-right">
+                            <h4 class="text-white">Mountains</h4>
+                            <p class="mb-0 text-white-50">Another example of a project with its respective description. These sections work well responsively as well!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--
+{% block 'contenido_article' %}
+<div class="section-video">
+    <div class="ti">
+        <h3>¿Como se utilza?</h3>
+        <div class="content-video">
+            <div class="video">
+                <h1>Video tutorial</h1>
+                <iframe width="560" height="315"
+                    src="https://www.youtube-nocookie.com/embed/B4LvDiIi128?si=2m0jynhtyRnvF48Q"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+            </div>
+            <div class="content-text-video">
+                <p>Busques lo que busques, comienza con una búsqueda simple, como ¿dónde está el aeropuerto más
+                    cercano?. Puedes agregar algunas palabras descriptivas si es necesario.
+                    Si buscas un lugar o un producto en una ubicación específica, inclúyela. Por ejemplo, panadería
+                    bogotá. </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock 'contenido_article' %}
+-->
+
+<div class="card">
+    <div class="face front">
+        <img loading="lazy" src="{% static 'img/imgAlumnos.jfif' %}" alt="">
+        <h3>ALUMNOS</h3>
+    </div>
+    <div class="face back">
+        <h3>ALUMNOS</h3>
+        <hr>
+        <div class="lista">
+            <ul>
+                <li>Realiza exámenes de manera sencilla.</li>
+            </ul>
+        </div>
+        <div class="link">
+            <a href="{% url "usuarios" %}" class="face back">SIGUIENTE</a>
+        </div>
+    </div>
+</div>
+</dir>
+<div class="card">
+<div class="face front">
+    <img loading="lazy" src="{% static 'img/imgProfesores.jfif' %}" alt="">
+    <h3>PROFESORES</h3>
+</div>
+<div class="face back">
+    <h3>PROFESORES</h3>
+    <hr>
+    <div class="lista">
+        <ul>
+            <li>Genera exámenes manera sencilla.</li>
+           
+        </ul>
+    </div>
+    <div class="link">
+        <a href="{% url "renderizar_pagina" %}" class="face back">SIGUIENTE</a>
+    </div>
+</div>
+</div>

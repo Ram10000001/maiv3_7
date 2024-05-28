@@ -25,12 +25,13 @@
         <div class="d-flex justify-content-center">
             <div class="text-center">
                 <h1 class="mx-auto my-0 text-uppercase">
-                    <span class="letraM">M</span> 
-                    <span class="letraAI">A</span> 
+                    <span class="letraM">M</span>
+                    <span class="letraAI">A</span>
                     <span class="letraAI">I</span>
-                </h1>                
+                </h1>
                 <hr>
-                <h2 class="text-white-50 mx-auto mt-2 mb-5">Generador de exámenes mediante inteligencia artificial. </h2>
+                <h2 class="text-white-50 mx-auto mt-2 mb-5">Generador de exámenes mediante inteligencia artificial.
+                </h2>
                 <a class="btn btn-primary" href="#about"><svg xmlns="http://www.w3.org/2000/svg" width="60" height="60"
                         fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 20 10">
                         <path fill-rule="evenodd"
@@ -45,77 +46,47 @@
 {% endblock 'contenido_main' %}
 
 {% block 'contenido_section' %}
-
-<br id="about">
-<br>
-
-
-<div class="button-pocition">
-    <div class="card">
-        <div class="face front">
-            <img loading="lazy" src="{% static 'img/imgAlumnos.jfif' %}" alt="">
-            <h3>ALUMNOS</h3>
-        </div>
-        <div class="face back">
-            <h3>ALUMNOS</h3>
-            <hr>
-            <div class="lista">
-                <ul>
-                    <li>Realiza exámenes de manera sencilla.</li>
-                </ul>
-            </div>
-            <div class="link">
-                <a href="{% url "usuarios" %}" class="face back">SIGUIENTE</a>
+<div class="button-pocition" id="about">
+    <div class="row gx-0 mb-5 mb-lg-0 justify-content-center">
+        <div class="col-lg-6"><img class="img-fluid" src="../static/img/imgProfesores.jfif" alt="..." /></div>
+        <div class="col-lg-6">
+            <div class="bg-black text-center h-100 project">
+                <div class="d-flex h-100">
+                    <div class="project-text w-100 my-auto text-center text-lg-left">
+                        <h1 class="text-white">Profesores:</h1>
+                        <ul class="mb-0 text-white-50">
+                            <h4>Genera exámenes manera sencilla.</h4>
+                        </ul>
+                            <a href="{% url "renderizar_pagina" %}"><button class="boton-siguiente">Siguiente</button></a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</dir>
-<div class="card">
-    <div class="face front">
-        <img loading="lazy" src="{% static 'img/imgProfesores.jfif' %}" alt="">
-        <h3>PROFESORES</h3>
-    </div>
-    <div class="face back">
-        <h3>PROFESORES</h3>
-        <hr>
-        <div class="lista">
-            <ul>
-                <li>Genera exámenes manera sencilla.</li>
-               
-            </ul>
-        </div>
-        <div class="link">
-            <a href="{% url "renderizar_pagina" %}" class="face back">SIGUIENTE</a>
-        </div>
-    </div>
-</div>
-{% endblock 'contenido_section' %}
-
-{% block 'contenido_article' %}
-<div class="section-video">
-    <div class="ti">
-        <h3>¿Como se utilza?</h3>
-        <div class="content-video">
-            <div class="video">
-                <h1>Video tutorial</h1>
-                <iframe width="560" height="315"
-                    src="https://www.youtube-nocookie.com/embed/B4LvDiIi128?si=2m0jynhtyRnvF48Q"
-                    title="YouTube video player" frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen></iframe>
-            </div>
-            <div class="content-text-video">
-                <p>Busques lo que busques, comienza con una búsqueda simple, como ¿dónde está el aeropuerto más
-                    cercano?. Puedes agregar algunas palabras descriptivas si es necesario.
-                    Si buscas un lugar o un producto en una ubicación específica, inclúyela. Por ejemplo, panadería
-                    bogotá. </p>
+    <!-- Project Two Row-->
+    <div class="row gx-0 justify-content-center">
+        <div class="col-lg-6"><img class="img-fluid" src="../static/img/imgAlumnos.jfif" alt="..." /></div>
+        <div class="col-lg-6 order-lg-first">
+            <div class="bg-black text-center h-100 project">
+                <div class="d-flex h-100">
+                    <div class="project-text w-100 my-auto text-center text-lg-right">
+                        <h4 class="text-white">
+                            <h1>Alumnos:</h1>
+                            <ul class="mb-0 text-white-50">
+                                <h4>Realiza exámenes de manera sencilla.</h4>
+                            </ul>
+                            <button class="boton-siguiente">Siguiente</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
-{% endblock 'contenido_article' %}
 
 
-{% block 'scripts' %}
-<script src="{% static "js/scripts_index.js" %}"></script>
-{% endblock 'scripts' %}
+    {% endblock 'contenido_section' %}
+
+
+
+    {% block 'scripts' %}
+    <script src="{% static "js/scripts_index.js" %}"></script>
+    {% endblock 'scripts' %}

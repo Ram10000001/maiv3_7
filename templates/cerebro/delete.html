@@ -97,3 +97,87 @@
 <script src="{% static "js\chat.js" %}"></script>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% block 'contenido_main' %}
+<div class="principal">
+  <div class="contenido">
+  <h1>MAI te ayuda a generar exámenes</h1>
+  <form action="get">
+
+    <div class="tema">
+      
+      <div class="form__group">
+        <h2>Tema: </h2>
+        <input type="list" id="tema" list="materias-list" name="nombre" class="form__field" required
+          oninput="checkInput(this)">
+        <label for="nombre" class="form__label">Tema</label>
+        <datalist id="materias">
+          <option data-value="Matematicas">Matemáticas</option>
+          <option data-value="Español">Español</option>
+        </datalist>
+      </div>
+    </div>
+
+    <div class="Grado">
+    <h2>Grado: </h2>
+      <div class="form__group">
+        <input type="list" id="grado" list="grado-list" name="nombre" class="form__field" required
+          oninput="checkInput(this)">
+        <label for="nombre" class="form__label">Grado</label>
+        <datalist id="materias">
+          <option data-value="Matematicas">Matemáticas</option>
+          <option data-value="Español">Español</option>
+        </datalist>
+      </div>
+    </div>
+
+    <div class="tipo-preguntas">
+      <h1>Tipos de preguntas:</h1>
+      <div class="preguntas">
+        <span>
+          <input class="balloon" id="state" type="number" min="0" value="0" /><label for="state">preguntas1</label>
+        </span>
+        <span>
+          <input class="balloon" id="state" type="number" min="0" value="0" /><label for="state">preguntas2</label>
+        </span>
+        <span>
+          <input class="balloon" id="state" type="number" min="0" value="0" /><label for="state">preguntas3</label>
+        </span>
+        <span>
+          <input class="balloon" id="state" type="number" min="0" value="0" /><label for="state">preguntas4</label>
+        </span>
+        <span>
+          <input class="balloon" id="state" type="number" min="0" value="0" /><label for="state">preguntas5</label>
+        </span>
+        <span>
+          <input class="balloon" id="state" type="number" min="0" value="0" /><label for="state">preguntas6</label>
+        </span>
+        <span>
+          <input class="balloon" id="state" type="number" min="0" value="0" /><label for="state">preguntas7</label>
+        </span>
+        <span>
+          <input class="balloon" id="state" type="number" min="0" value="0" /><label for="state">preguntas8</label>
+        </span>
+      </div>
+      <div class="contador-preguntas" id="contador-preguntas">Cantidad de preguntas: 0</div>
+    </div>
+    
+    <button class="btn-generar-examen">Generar Examen</button>
+  </form>
+</div>
+</div>
+{% endblock 'contenido_main' %}

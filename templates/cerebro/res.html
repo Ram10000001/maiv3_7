@@ -1,10 +1,10 @@
-{% extends "layout/base.html" %}
+
 
 {% block 'meta' %}
 <meta name="csrf-token" content="{{ csrf_token }}">
 {% endblock 'meta' %}
 
-{% block 'titulo' %}Chat{% endblock 'titulo' %}
+{% block 'titulo' %}Generador Examenes{% endblock 'titulo' %}
 
 {% block 'styles' %}
 {% load static %}
@@ -17,56 +17,85 @@
 {% endblock 'styles' %}
 
 {% block 'contenido_main' %}
-<div class="principal">
-  <form>
-
-    <div class="tema">
-      <div class="form__group">
-        <input type="list" id="nombre" list="materias" name="nombre" class="form__field" required
-          oninput="checkInput(this)">
-        <label for="nombre" class="form__label">Tema</label>
-        <datalist id="materias">
-          <option data-value=""="Matematicas">Matemáticas</option>
-          <option data-value="Español">Español</option>
-        </datalist>
+<div id="wrap" class="input">
+  <header class="input-header">
+    <h1>¡Bienvenido a MAI!</h1>
+  </header>
+  <section class="input-content">
+    <h2>MAI te ayuda a generar exámenes</h2>
+    <div class="input-content-wrap">
+      <dl class="inputbox">
+        <dt class="inputbox-title">Tema del examen</dt>
+        <dd class="inputbox-content">
+          <input id="input0" type="text" required list="temas-list">
+          <label for="input0">Tema</label>
+          <span class="underline"></span>
+          <datalist id="temas-list">
+            <option value="Matemáticas">Matemáticas</option>
+            <option value="Español">Español</option>
+            <!-- Agrega más opciones según tus necesidades -->
+          </datalist>
+        </dd>
+      </dl>
+      
+      <dl class="inputbox">
+        <dt class="inputbox-title">Grado aplicar el examen</dt>
+        <dd class="inputbox-content">
+          <input id="input1" type="text" required list="password-options">
+          <label for="input1">Grado</label>
+          <span class="underline"></span>
+          <datalist id="password-options">
+            <option value="Primero">Primero de primaria</option>
+            <option value="Segundo">Segundo de primaria</option>
+            <!-- Agrega más opciones según tus preferencias -->
+          </datalist>
+        </dd>
+      </dl>
+      <div class="tipo-preguntas">
+        <h1>Tipos de preguntas:</h1>
+        <div class="preguntas">
+          <span>
+            <label for="state">Opcion multiple</label>
+            <input class="balloon" id="state" type="number" min="0" value="0" />
+          </span>
+          <span>
+            <label for="state">Verdadero o falso</label>
+            <input class="balloon" id="state" type="number" min="0" value="0" />
+          </span>
+          <span>
+            <label for="state">Respuesta corta</label>
+            <input class="balloon" id="state" type="number" min="0" value="0" />
+          </span>
+          <span>
+            <label for="state">Emparejamiento</label>
+            <input class="balloon" id="state" type="number" min="0" value="0" />
+          </span>
+          <span>
+            <label for="state">Respuesta numerica</label>
+            <input class="balloon" id="state" type="number" min="0" value="0" />
+          </span>
+          <span>
+            <label for="state">Respuesta larga</label>
+            <input class="balloon" id="state" type="number" min="0" value="0" />
+          </span>
+          <span>
+            <label for="state">Seleccion multiple</label>
+            <input class="balloon" id="state" type="number" min="0" value="0" />
+          </span>
+          <span>
+            <label for="state">Rellenar espacios</label>
+            <input class="balloon" id="state" type="number" min="0" value="0" />
+          </span>
+        </div>
+        <div class="contador-preguntas" id="contador-preguntas">Cantidad de preguntas: 0</div>
+      </div>
+      
+      <div class="btns">
+         <a href="{% url "index" %}"> <button class="btn btn-cancel">Atras</button></a>
+          <button class="btn btn-confirm">Generar Examen</button>
       </div>
     </div>
-    
-    <div class="tipo-preguntas">
-      <h1>Tipos de preguntas:</h1>
-      <div class="preguntas">
-        <span>
-          <input class="balloon" id="state" type="number" min="0" value="0" /><label for="state">preguntas1</label>
-        </span>
-        <span>
-          <input class="balloon" id="state" type="number" min="0" value="0" /><label for="state">preguntas2</label>
-        </span>
-        <span>
-          <input class="balloon" id="state" type="number" min="0" value="0" /><label for="state">preguntas3</label>
-        </span>
-        <span>
-          <input class="balloon" id="state" type="number" min="0" value="0" /><label for="state">preguntas4</label>
-        </span>
-        <span>
-          <input class="balloon" id="state" type="number" min="0" value="0" /><label for="state">preguntas5</label>
-        </span>
-        <span>
-          <input class="balloon" id="state" type="number" min="0" value="0" /><label for="state">preguntas6</label>
-        </span>
-        <span>
-          <input class="balloon" id="state" type="number" min="0" value="0" /><label for="state">preguntas7</label>
-        </span>
-        <span>
-          <input class="balloon" id="state" type="number" min="0" value="0" /><label for="state">preguntas8</label>
-        </span>
-      </div>
-    </div>
-
-      <div class="form__group">
-        <input type="text" id="grado" name="grado" class="form__field" required oninput="checkInput(this)">
-        <label for="grado" class="form__label">¿A qué grado se les aplicara el examen?</label>
-      </div>
-  </form>
+  </section>
 </div>
 {% endblock 'contenido_main' %}
 
@@ -88,7 +117,21 @@
       quantity.value = 0;
     }
   }
+ // Obtener los elementos de los campos de entrada
+ const inputs = document.querySelectorAll('.preguntas input[type="number"]');
+ const contador = document.getElementById('contador-preguntas');
 
+ // Inicializar el contador
+ let totalPreguntas = 0;
+
+ // Escuchar cambios en los campos de entrada
+ inputs.forEach(input => {
+     input.addEventListener('input', () => {
+         // Calcular la suma total de preguntas
+         totalPreguntas = Array.from(inputs).reduce((sum, input) => sum + parseInt(input.value), 0);
+         contador.textContent = `Cantidad de preguntas: ${totalPreguntas}`;
+     });
+ });
 
 
 

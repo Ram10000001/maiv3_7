@@ -23,8 +23,10 @@
 .masthead h1,
 .masthead .h1 {
   font-family: var(--font-title);
-  font-size: 18rem !important; /* Ajusta este valor según tus necesidades */
-  line-height: 18rem !important; /* Ajusta este valor según tus necesidades */
+  font-size: 18rem !important;
+  /* Ajusta este valor según tus necesidades */
+  line-height: 18rem !important;
+  /* Ajusta este valor según tus necesidades */
   letter-spacing: 0.8rem;
   background: white;
   -webkit-background-clip: text;
@@ -36,7 +38,7 @@
 }
 
 .letraAI {
-  color: #8eaade ;
+  color: #8eaade;
 }
 
 .masthead hr {
@@ -45,6 +47,7 @@
 }
 
 @media (min-width: 320px) and (max-width: 600px) {
+
   .masthead h1,
   .masthead .h1 {
     font-size: 5rem !important;
@@ -53,6 +56,7 @@
 }
 
 @media (min-width: 601px) and (max-width: 1000px) {
+
   .masthead h1,
   .masthead .h1 {
     font-size: 7rem !important;
@@ -60,178 +64,34 @@
   }
 }
 
-
-/*Edicion de los botones pagina princiapal */
-.button-pocition {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.card {
+/* Estilos para el botón */
+.boton-siguiente {
   position: relative;
-  margin: 20px auto;
-  width: 47%;
-  height: 500px;
-  background: white;
-  border-radius: 10px;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 50px;
-  font-weight: lighter;
-  letter-spacing: 2px;
-  transition: 1s box-shadow;
+    top: 11rem;
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
   cursor: pointer;
 }
 
-.card .face {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  border-radius: 10px;
-  overflow: hidden;
-  transition: .5s;
-}
+.boton-siguiente:hover {
+  background-color: #0056b3;
 
-.card .front {
-  transform: perspective(600px) rotateY(0deg);
-  box-shadow: 0 5px 10px #000;
 }
-
-.card .front img {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.card .front h3 {
-  font-size: 50px;
-  position: absolute;
-  top: 50%;
-  left: auto;
-  bottom: 0;
-  width: 100%;
-  height: 60px;
-  line-height: 60px;
-  color: #fff;
-  background: rgba(0, 0, 0, .65);
-  text-align: center;
-}
-
-.card .back {
-  transform: perspective(600px) rotateY(180deg);
-  background: rgb(3, 35, 54);
-  padding: 15px;
-  color: #f3f3f3;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  text-decoration: none;
-  justify-content: space-between;
-}
-
-.card .back .link {
-  border-top: solid 1px #f3f3f3;
-  height: 50px;
-  line-height: 50px;
-  text-decoration: none;
-}
-
-.card .back .link a {
-  color: #f3f3f3;
-}
-
-.card .back h3 {
-  font-size: 40px;
-  margin-top: 5px;
-  letter-spacing: 2px;
-}
-
-.card .back .lista {
-  text-align: justify;
-  text-decoration: none;
-  margin: 10px 40px;
-  font-size: xx-large;
-}
-.card.flipped .front {
-  transform: perspective(600px) rotateY(180deg);
-}
-
-.card.flipped .back {
-  transform: perspective(600px) rotateY(360deg);
-}
-
-
-.card:hover {
-  box-shadow: 0 5px 35px 0px rgba(145, 41, 41, 0.6);
-}
-
-.card:hover::before,
-.card:hover::after {
-  border-radius: 10px;
-  content: '';
-  position: absolute;
-  left: -8px;
-  top: -8px;
-  background: linear-gradient(120deg, #79fb00, #8d01a0, #031ba5, #ff004c,
-      #e6036d, #fb0094, #ff6600, #04c2e4, #adad02, #00c3ff);
-  background-size: 300%;
-  width: calc(100% + 16px);
-  height: calc(100% + 16px);
-  z-index: -1;
-  animation: BGgradient 15s ease infinite;
-}
-
-.card:hover:after {
-  filter: brightness(1.4);
-  filter: drop-shadow(16px 16px 20px rgb(248, 220, 97));
-  filter: blur(15px);
-}
-
-@keyframes BGgradient {
-  0% {
-    background-position: 0% 200%;
+@media (min-width: 320px) and (max-width: 834px) {
+  .boton-siguiente {
+      top: 0rem; /* Ajusta la posición vertical según tus preferencias */
+      padding: 5px 10px;
+      font-size: 14;
   }
-
-  50% {
-    background-position: 200% 0%;
-  }
-
-  100% {
-    background-position: 0% 330%;
+  .project-text h4{
+    font-size: 14px;
   }
 }
 
-@media (max-width: 768px) {
-  .button-pocition {
-    flex-direction: column;
-  }
-
-  .card {
-    width: 100%;
-    margin-bottom: 20px;
-  }
-
-  .card .back {
-    /* Ajusta el tamaño y el estilo del contenido en la parte trasera de la tarjeta aquí */
-  }
-}
-
-@media (max-width: 360px) and (min-width: 320px) {
-  .card .front h3 {
-    font-size: 40px;
-  }
-
-  .card .back h3 {
-    font-size: 30px;
-    margin-top: 5px;
-    letter-spacing: 2px;
-  }
-
-  .card .back {
-    /* Ajusta el tamaño y el estilo del contenido en la parte trasera de la tarjeta aquí */
-  }
-}
 /*Edicion de utilizar */
 .ti {
   border: 2px solid black;
