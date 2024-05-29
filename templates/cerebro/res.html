@@ -56,15 +56,15 @@
         <div class="preguntas">
           <span>
             <label for="state">Opcion multiple</label>
-            <input class="balloon" id="state" type="number" min="0" value="0" />
+            <input class="balloon" id="state opcion_multiple" type="number" min="0" value="0" />
           </span>
           <span>
             <label for="state">Verdadero o falso</label>
-            <input class="balloon" id="state" type="number" min="0" value="0" />
+            <input class="balloon" id="state verdadero-falso" type="number" min="0" value="0" />
           </span>
           <span>
             <label for="state">Respuesta corta</label>
-            <input class="balloon" id="state" type="number" min="0" value="0" />
+            <input class="balloon" id="state respuesta_corta" type="number" min="0" value="0" />
           </span>
           <span>
             <label for="state">Emparejamiento</label>
@@ -72,26 +72,26 @@
           </span>
           <span>
             <label for="state">Respuesta numerica</label>
-            <input class="balloon" id="state" type="number" min="0" value="0" />
+            <input class="balloon" id="state respuesta_numerica" type="number" min="0" value="0" />
           </span>
           <span>
             <label for="state">Respuesta larga</label>
-            <input class="balloon" id="state" type="number" min="0" value="0" />
+            <input class="balloon" id="state respuesta_larga" type="number" min="0" value="0" />
           </span>
           <span>
             <label for="state">Seleccion multiple</label>
-            <input class="balloon" id="state" type="number" min="0" value="0" />
+            <input class="balloon" id="state seleccion-multiple" type="number" min="0" value="0" />
           </span>
           <span>
             <label for="state">Rellenar espacios</label>
-            <input class="balloon" id="state" type="number" min="0" value="0" />
+            <input class="balloon" id="state rellenar_espacio" type="number" min="0" value="0" />
           </span>
         </div>
         <div class="contador-preguntas" id="contador-preguntas">Cantidad de preguntas: 0</div>
       </div>
       
       <div class="btns">
-         <a href="{% url "index" %}"> <button class="btn btn-cancel">Atras</button></a>
+         <a href="{% url "index" %}"> <button class="btn btn-cancel" id="generar_examne">Atras</button></a>
           <button class="btn btn-confirm">Generar Examen</button>
       </div>
     </div>
