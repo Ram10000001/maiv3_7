@@ -376,9 +376,8 @@ function botePronto() {
     },
   };
 
-  let data = convertirObjeto(botResponse);
-  let responseText = convertirExamen(data);
-  console.log(responseText)
+  let botResponseJSON = JSON.stringify(botResponse);
+  modelResponse(botResponseJSON);
 }
 
 export function sendButton() {
