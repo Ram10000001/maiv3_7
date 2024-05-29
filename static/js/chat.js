@@ -72,6 +72,7 @@ function processRequest(userText, csrftoken) {
       sendAjaxRequest(csrftoken) //Envia la respuesta a la IA para que la procese
         .then((data) => {
           //showModelResponse(data.respuesta); //Muestra la respuesta de la IA en el chat
+          console.log("AJAX FLAG");
           modelResponse(data.respuesta);
         })
         .catch((error) => {
@@ -85,7 +86,7 @@ function processRequest(userText, csrftoken) {
     });
 }
 
-window.onload = ventanaFlotante;
+//window.onload = ventanaFlotante;
 window.sendButton = sendButton;
 
 //formatea el contenido del chat para moverlo a una nueva pagina HTML
