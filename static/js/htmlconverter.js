@@ -45,6 +45,7 @@ function convertere_JSON(botResponse) {
 
 export function processusExam(botResponse) {
     let data = convertere_JSON(botResponse);
+    console.log('Datos convertidos:', data); // Añade esta línea para depurar
     return convertirExamen(data);
 }
 
