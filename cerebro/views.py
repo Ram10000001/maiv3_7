@@ -5,19 +5,10 @@ from django.http import JsonResponse
 from .geminitools import procesar_preg
 import json
 
-
-def mensajeVariablesVF(request):
-    nombre = json.dumps(request.session.get('nombre'))
-    materia = json.dumps(request.session.get('materia'))
-    mensaje = "Materia: " + materia + " " + nombre
-    return mensaje
-
-
 def enviar(request):  # Envia la respuesta del usuario y la guarda en BD
     if request.method == 'POST':
         userText = request.POST.get('userText')  # Obtiene el prompt desde JS
-        mensaje = mensajeVariablesVF(request)
-        procesar_preg(userText, mensaje)
+        procesar_preg(userText)
         return JsonResponse({'respuesta': userText})
     else:
         return JsonResponse({'error': 'Método no permitido'}, status=405)

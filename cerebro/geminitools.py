@@ -100,8 +100,7 @@ def erroresJSON(logger, userTextCopy, respuesta):
 
 #Cambiar el numero de preguntas 
 def revisar_JSON(userText: str):
-    userTextCopy = userText + ' Genera un examen en formato JSON usando el siguiente formato ' + \
-        prompt_parts + varibalesVFCopy
+    userTextCopy = userText + ' Genera un examen en formato JSON usando el siguiente formato ' + prompt_parts
     intentos, num_max_int = 0, 5
     respuesta = None
     mensajes = ['Arregla el fromato JSON del examen como en el ejemplo: ', 'El formato del examen está mal arreglalo: ',
@@ -127,10 +126,7 @@ def revisar_JSON(userText: str):
 
 
 # Procesa la pregunta primero para ver como reacciona el modelo
-def procesar_preg(userText, variablesVF):
-    global varibalesVFCopy
-    varibalesVFCopy = variablesVF
-    
+def procesar_preg(userText):
     respuesta = revisar_JSON(userText)
     # Una vez procesada la respuesta, se guarda la pregunta del usuario y la respuesta del modelo
     Pregunta.objects.create(role="user", parts=userText)
