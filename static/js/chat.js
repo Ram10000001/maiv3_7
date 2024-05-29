@@ -1,5 +1,5 @@
 //import { showLoadingAnimation, hideLoadingAnimation } from "./loadanim.js";
-import { convertirExamen } from "./htmlconverter.js";
+import { convertirExamen, processusExam } from "./htmlconverter.js";
 import { crearExamenJson } from "./claseexamen.js";
 //import { ventanaFlotante } from "./ventanaf.js";
 
@@ -377,7 +377,7 @@ function botePronto() {
     },
   };
 
-  let data = convertirExamen(botResponse);
+  let data = processusExam(botResponse);
   modelResponse(data);
 }
 
