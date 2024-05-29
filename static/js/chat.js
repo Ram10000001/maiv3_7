@@ -72,7 +72,8 @@ function processRequest(userText, csrftoken) {
     .then((data) => {
       sendAjaxRequest(csrftoken) //Envia la respuesta a la IA para que la procese
         .then((data) => {
-          showModelResponse(data.respuesta); //Muestra la respuesta de la IA en el chat
+          //showModelResponse(data.respuesta); //Muestra la respuesta de la IA en el chat
+          modelResponse(data.respuesta);
         })
         .catch((error) => {
           console.error("Error:", error);
@@ -105,6 +106,31 @@ function formatBubbleChat(div) {
   pdfButton.textContent = "PDF";
   pdfButton.className = "pdf-button";
   div.appendChild(pdfButton); // Añadir el botón "Generar PDF" al div
+}
+
+function pasarEditor(div) {
+  // Crear el enlace de redirección
+  let url = "/editor/editor?text=" + encodeURIComponent(div.innerHTML);
+  // Redirigir automáticamente a la nueva URL
+  window.location.href = url;
+}
+
+//Muestra la respuesta de la IA en el chat
+function modelResponse(botResponse) {
+  //let responseText = processusExam(botResponse);
+  let test = convertirObjeto(botResponse);
+  let responseText = convertirExamen(test);
+  console.log(responseText);
+  let chatbox = document.getElementById("chatbox");
+  let div = document.createElement("div"); // Crear un nuevo elemento div para la burbuja de chat
+  let p = document.createElement("p"); // Crear un nuevo elemento p para el texto del chat
+  let span = document.createElement("span"); // Crear un nuevo elemento span
+  div.className = "botText"; // Asegúrate de que el div tiene la clase correcta para la burbuja del chat
+  span.innerHTML = responseText; // Añadir el contenido HTML al span
+  p.appendChild(span); // Añadir el span al p
+  div.appendChild(p); // Añadir el p al div
+
+  pasarEditor(div);
 }
 
 // Aquí es donde definimos la función eliminarEtiquetas
@@ -212,6 +238,34 @@ function getResponse() {
   let userText = $("#textInput").val();
   const csrftoken = getCookie("csrftoken");
   showUserText(userText); //Muestra el texto del usuario en el chat
+  showLoadingAnimation();
+  processRequest(userText, csrftoken); //Procesa la peticion del usuario y extrae la respuesta de Gemini
+}
+
+function obtenerRespuesta() {
+  let userText =
+    "Genera un examen de " +
+    $("input0 tema").val() +
+    " para el grado de " +
+    $("input1 materia").val() +
+    " con la siguiente cantidad del tipo de preguntas: opcion_multiple:" +
+    $("state opc_mul").val() +
+    " verdadero_falso:" +
+    $("state var_fal").val() +
+    " respuesta_corta:" +
+    $("state res_cor").val() +
+    " emparejamiento:" +
+    $("state emp").val() +
+    " respuesta_numerica:" +
+    $("state res_num").val() +
+    " respuesta_larga:" +
+    $("state res_lag").val() +
+    " seleccion_multiple:" +
+    $("state sel_mul").val() +
+    " rellenar_espacios:" +
+    $("state rel_esp").val();
+
+  const csrftoken = getCookie("csrftoken");
   showLoadingAnimation();
   processRequest(userText, csrftoken); //Procesa la peticion del usuario y extrae la respuesta de Gemini
 }
