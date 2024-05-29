@@ -284,12 +284,110 @@ function buttonSendText(sampleText) {
   // }, 1000)
 }
 
+function botePronto() {
+  let botResponse = {
+    examen: {
+      titulo: "Examen de Biología - La Célula",
+      descripcion:
+        "Este examen evalúa tu conocimiento sobre la célula, su estructura y funciones.",
+      preguntas: [
+        {
+          tipo: "opcion_multiple",
+          enunciado:
+            "¿Cuál de las siguientes NO es una característica de todas las células?",
+          instrucciones: "Selecciona una opción de las proporcionadas.",
+          opciones: [
+            "Membrana plasmática",
+            "Pared celular",
+            "Material genético",
+            "Ribosomas",
+          ],
+          respuesta_correcta: "Pared celular",
+          fuente:
+            "https://es.khanacademy.org/science/biology/structure-of-a-cell",
+        },
+        {
+          tipo: "verdadero_falso",
+          enunciado: "La mitocondria es responsable de la fotosíntesis.",
+          instrucciones: "Selecciona 'Verdadero' o 'Falso'.",
+          respuesta_correcta: "Falso",
+          fuente:
+            "https://es.khanacademy.org/science/biology/structure-of-a-cell/tour-of-organelles/a/chloroplasts-and-mitochondria",
+        },
+        {
+          tipo: "respuesta_corta",
+          enunciado:
+            "¿Cómo se llama el proceso por el cual la célula vegetal produce su propio alimento?",
+          instrucciones: "Escribe tu respuesta en el espacio proporcionado.",
+          respuesta_correcta: "Fotosíntesis",
+          fuente:
+            "https://es.khanacademy.org/science/biology/cellular-respiration-and-fermentation",
+        },
+        {
+          tipo: "emparejamiento",
+          enunciado: "Relaciona cada organelo con su función:",
+          instrucciones: "Arrastra cada organelo a su función correspondiente.",
+          pares: {
+            opcion_a: "Núcleo",
+            enlace_a: "Almacena el ADN celular",
+            opcion_b: "Ribosomas",
+            enlace_b: "Sintetizan proteínas",
+            opcion_c: "Mitocondria",
+            enlace_c: "Produce energía (ATP)",
+          },
+          fuente:
+            "https://es.khanacademy.org/science/biology/structure-of-a-cell",
+        },
+        {
+          tipo: "respuesta_numerica",
+          enunciado: "¿Cuántos cromosomas tiene una célula humana normal?",
+          instrucciones: "Escribe el número.",
+          respuesta_correcta: 46,
+          fuente:
+            "https://medlineplus.gov/spanish/genetics/understanding/basics/chromosome/",
+        },
+        {
+          tipo: "respuesta_larga",
+          enunciado:
+            "Describe las diferencias entre una célula procariota y una eucariota.",
+          instrucciones: "Escribe tu respuesta en el espacio proporcionado.",
+          fuente:
+            "https://es.khanacademy.org/science/biology/structure-of-a-cell/prokaryotic-and-eukaryotic-cells/a/prokaryotic-cells",
+        },
+        {
+          tipo: "seleccion_multiple",
+          enunciado:
+            "Selecciona las dos opciones que son componentes de la pared celular vegetal.",
+          instrucciones: "Puede haber más de una respuesta correcta.",
+          opciones: ["Celulosa", "Quitina", "Peptidoglucano", "Lignina"],
+          respuestas_correctas: ["Celulosa", "Lignina"],
+          fuente:
+            "https://es.khanacademy.org/science/biology/structure-of-a-cell/plant-cell-structures-and-functions/a/plant-cell-walls",
+        },
+        {
+          tipo: "rellenar_espacios",
+          enunciado:
+            "La ___________ es el medio gelatinoso dentro de la célula donde se encuentran los organelos.",
+          instrucciones: "Escribe la palabra que falta en el espacio.",
+          respuesta_correcta: "Citoplasma",
+          fuente:
+            "https://es.khanacademy.org/science/biology/structure-of-a-cell",
+        },
+      ],
+    },
+  };
+
+  let data = convertirExamen(botResponse);
+  modelResponse(data);
+}
+
 export function sendButton() {
   //var texto = document.getElementById("textInput").value;
   //if (texto) {
-    //getResponse();
-    console.log("Flag enviar");
-    obtenerRespuesta();
+  //getResponse();
+  console.log("Flag enviar");
+  //obtenerRespuesta();
+  botePronto();
   //}
 }
 
