@@ -1,7 +1,6 @@
 import { showLoadingAnimation, hideLoadingAnimation } from "./loadanim.js";
 import { convertirExamen } from "./htmlconverter.js";
 import { crearExamenJson } from "./claseexamen.js";
-import { ventanaFlotante } from "./ventanaf.js";
 
 export function getCookie(name) {
   let cookieValue = null;
