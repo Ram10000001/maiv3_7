@@ -376,7 +376,7 @@ function botePronto() {
     },
   };
 
-  modelResponse(responseText);
+  modelResponse(botResponse);
 }
 
 export function sendButton() {
