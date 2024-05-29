@@ -326,14 +326,11 @@ function botePronto() {
           tipo: "emparejamiento",
           enunciado: "Relaciona cada organelo con su función:",
           instrucciones: "Arrastra cada organelo a su función correspondiente.",
-          pares: {
-            opcion_a: "Núcleo",
-            enlace_a: "Almacena el ADN celular",
-            opcion_b: "Ribosomas",
-            enlace_b: "Sintetizan proteínas",
-            opcion_c: "Mitocondria",
-            enlace_c: "Produce energía (ATP)",
-          },
+          pares: [
+            { opcion: "Núcleo", enlace: "Almacena el ADN celular" },
+            { opcion: "Ribosomas", enlace: "Sintetizan proteínas" },
+            { opcion: "Mitocondria", enlace: "Produce energía (ATP)" },
+          ],
           fuente:
             "https://es.khanacademy.org/science/biology/structure-of-a-cell",
         },
@@ -376,8 +373,9 @@ function botePronto() {
     },
   };
 
+  // Convertir a JSON string
   let botResponseJSON = JSON.stringify(botResponse);
-  modelResponse(botResponseJSON);
+  console.log(botResponseJSON);
 }
 
 export function sendButton() {
