@@ -284,11 +284,11 @@ function buttonSendText(sampleText) {
 }
 
 export function sendButton() {
-  var texto = document.getElementById("textInput").value;
-  if (texto) {
+  //var texto = document.getElementById("textInput").value;
+  //if (texto) {
     //getResponse();
     obtenerRespuesta();
-  }
+  //}
 }
 
 // Press enter to send a message
