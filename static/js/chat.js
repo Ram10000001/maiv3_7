@@ -85,7 +85,7 @@ function processRequest(userText, csrftoken) {
     });
 }
 
-window.onload = ventanaFlotante;
+//window.onload = ventanaFlotante;
 window.sendButton = sendButton;
 
 //formatea el contenido del chat para moverlo a una nueva pagina HTML
