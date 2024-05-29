@@ -121,7 +121,7 @@ WSGI_APPLICATION = 'MAI.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-"""DATABASES = {
+DATABASES = {
     "default": {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         "NAME": "neuronas",
@@ -130,11 +130,11 @@ WSGI_APPLICATION = 'MAI.wsgi.application'
         'HOST': 'localhost',
         "PORT": "5432",
     }
-}"""
-
-DATABASES = {
-    'default': dj_database_url.parse(env('DATABASE_URL'))
 }
+
+"""DATABASES = {
+    'default': dj_database_url.parse(env('DATABASE_URL'))
+}"""
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
