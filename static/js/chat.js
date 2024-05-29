@@ -1,6 +1,7 @@
-import { showLoadingAnimation, hideLoadingAnimation } from "./loadanim.js";
+//import { showLoadingAnimation, hideLoadingAnimation } from "./loadanim.js";
 import { convertirExamen } from "./htmlconverter.js";
 import { crearExamenJson } from "./claseexamen.js";
+//import { ventanaFlotante } from "./ventanaf.js";
 
 export function getCookie(name) {
   let cookieValue = null;
@@ -45,7 +46,7 @@ export function firstBotMessage(nombre) {
 }
 
 function sendAjaxRequest(csrftoken) {
-  hideLoadingAnimation();
+  //hideLoadingAnimation();
   return new Promise((resolve, reject) => {
     $.ajax({
       url: "/cerebro/recibir/", // La URL de tu vista uwu
@@ -77,12 +78,12 @@ function processRequest(userText, csrftoken) {
         })
         .catch((error) => {
           console.error("Error:", error);
-          hideLoadingAnimation();
+          //hideLoadingAnimation();
         });
     })
     .catch((error) => {
       console.error("Error:", error);
-      hideLoadingAnimation();
+      //hideLoadingAnimation();
     });
 }
 
@@ -238,7 +239,7 @@ function getResponse() {
   let userText = $("#textInput").val();
   const csrftoken = getCookie("csrftoken");
   showUserText(userText); //Muestra el texto del usuario en el chat
-  showLoadingAnimation();
+  //showLoadingAnimation();
   processRequest(userText, csrftoken); //Procesa la peticion del usuario y extrae la respuesta de Gemini
 }
 
@@ -266,7 +267,7 @@ function obtenerRespuesta() {
     $("state rel_esp").val();
 
   const csrftoken = getCookie("csrftoken");
-  showLoadingAnimation();
+  //showLoadingAnimation();
   processRequest(userText, csrftoken); //Procesa la peticion del usuario y extrae la respuesta de Gemini
 }
 
