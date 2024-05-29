@@ -287,6 +287,7 @@ export function sendButton() {
   //var texto = document.getElementById("textInput").value;
   //if (texto) {
     //getResponse();
+    console.log("Flag enviar");
     obtenerRespuesta();
   //}
 }
