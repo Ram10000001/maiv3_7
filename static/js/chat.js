@@ -376,7 +376,8 @@ function botePronto() {
     },
   };
 
-  let responseText = convertirExamen(botResponse);
+  let data = convertirObjeto(botResponse);
+  let responseText = convertirExamen(data);
   console.log(responseText)
 }
 
