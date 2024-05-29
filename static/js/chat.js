@@ -376,7 +376,8 @@ function botePronto() {
     },
   };
 
-  modelResponse(botResponse);
+  let responseText = convertirExamen(botResponse);
+  console.log(responseText)
 }
 
 export function sendButton() {
