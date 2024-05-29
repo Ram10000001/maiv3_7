@@ -122,7 +122,6 @@ function modelResponse(botResponse) {
   let test = convertirObjeto(botResponse);
   let responseText = convertirExamen(test);
   console.log(responseText);
-  let chatbox = document.getElementById("chatbox");
   let div = document.createElement("div"); // Crear un nuevo elemento div para la burbuja de chat
   let p = document.createElement("p"); // Crear un nuevo elemento p para el texto del chat
   let span = document.createElement("span"); // Crear un nuevo elemento span
@@ -377,8 +376,7 @@ function botePronto() {
     },
   };
 
-  let data = processusExam(botResponse);
-  modelResponse(data);
+  modelResponse(responseText);
 }
 
 export function sendButton() {
