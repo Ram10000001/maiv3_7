@@ -291,7 +291,7 @@ export function sendButton() {
 }
 
 // Press enter to send a message
-$("#textInput").keypress(function (e) {
+/*$("#textInput").keypress(function (e) {
   if (e.which == 13) {
     getResponse();
   }
@@ -305,4 +305,4 @@ document
       event.preventDefault();
       sendButton(); // Llama a la función para enviar el mensaje
     }
-  });
+  });*/
