@@ -376,6 +376,7 @@ function botePronto() {
   // Convertir a JSON string
   let botResponseJSON = JSON.stringify(botResponse);
   console.log(botResponseJSON);
+  modelResponse(botResponseJSON);
 }
 
 export function sendButton() {
