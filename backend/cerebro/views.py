@@ -39,3 +39,8 @@ def renderizar_pagina(request):
 
 def borrar(request):
     return render(request, 'cerebro/borrar.html', {})
+
+#Borrar despues
+def api_test(request):
+    data = {'message': 'Hello from Django!'}
+    return JsonResponse(data)

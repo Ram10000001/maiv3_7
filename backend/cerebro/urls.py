@@ -7,4 +7,6 @@ urlpatterns = [
     path('recibir/', views.recibir, name="recibir"),
     path("borrar/", views.borrar, name="borrar"),
     path('enviarAPrompt/', views.enviarAPrompt, name="enviarAPrompt"),
+    #Borrar despues
+    path('test/', views.api_test, name="test")
 ]
