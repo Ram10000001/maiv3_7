@@ -19,7 +19,6 @@ logger = logging.getLogger(__name__)
 # Usa os.getenv para obtener la clave de API
 genai.configure(api_key=env('API_KEY_GOOGLE'))
 
-
 uploaded_files = []
 
 # Set up the model
