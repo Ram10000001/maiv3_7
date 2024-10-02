@@ -246,25 +246,25 @@ function getResponse() {
 function obtenerRespuesta() {
   let userText =
     "Genera un examen de " +
-    $("input0 tema").val() +
+    document.getElementById("input0_tema").value +
     " para el grado de " +
-    $("input1 materia").val() +
+    document.getElementById("input1_grado").value +
     " con la siguiente cantidad del tipo de preguntas: opcion_multiple:" +
-    $("state opc_mul").val() +
+    document.getElementById("state_opc_mul").value +
     " verdadero_falso:" +
-    $("state var_fal").val() +
+    document.getElementById("state_ver_fal").value +
     " respuesta_corta:" +
-    $("state res_cor").val() +
+    document.getElementById("state_res_cor").value +
     " emparejamiento:" +
-    $("state emp").val() +
+    document.getElementById("state_emp").value +
     " respuesta_numerica:" +
-    $("state res_num").val() +
+    document.getElementById("state_res_num").value +
     " respuesta_larga:" +
-    $("state res_lag").val() +
+    document.getElementById("state_res_lar").value +
     " seleccion_multiple:" +
-    $("state sel_mul").val() +
+    document.getElementById("state_sel_mul").value +
     " rellenar_espacios:" +
-    $("state rel_esp").val();
+    document.getElementById("state_rel_esp").value;
 
   const csrftoken = getCookie("csrftoken");
   //showLoadingAnimation();
@@ -382,10 +382,10 @@ function botePronto() {
 }
 
 export function sendButton() {
+  obtenerRespuesta();
   //var texto = document.getElementById("textInput").value;
   // if (texto) {
   //getResponse();
-  obtenerRespuesta();
   //console.log("Flag enviar");
   //botePronto();
   //}
