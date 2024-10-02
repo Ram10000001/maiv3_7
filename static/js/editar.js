@@ -1,3 +1,4 @@
+/*
 function makeOnClickHandler(pregunta) {
     return function() {
         console.log('makeOnClickHandler llamado con pregunta:', pregunta);
@@ -76,6 +77,7 @@ function botonEditar() {
         preguntas[i].appendChild(botonEditar);
     }
 }
+    
 
 function botonBorrar() {
     var preguntas = document.getElementsByClassName('pregunta');
@@ -120,9 +122,9 @@ function ventanaScrollBotones() {
   
 
   window.onload = function() {
-    ventanaScrollBotones();
-    botonEditar();
-    botonBorrar();
-    moverPreguntas();
+    //ventanaScrollBotones();
+    //botonEditar();
+   // botonBorrar();
+   // moverPreguntas();
   };
-  
+  */

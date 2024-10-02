@@ -12,7 +12,7 @@
    
     <!-- Contenido principal -->
     <div class="edit">
-        <h1>E D I T O R</h1>
+        <h1>Examen generado</h1>
         <div class="contenido_examen examen">
             <!-- Aquí se renderiza cada pregunta como HTML seguro -->
             {% for question in questions %}
@@ -29,7 +29,7 @@
     
 
 </div>
-<div class="botones-ayudantes">
+{% comment %} <div class="botones-ayudantes"> 
     <button class="btn btn-secondary" id="deshacer" title="deshacer"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-90deg-left" viewBox="0 0 16 16">
         <path fill-rule="evenodd" d="M1.146 4.854a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H12.5A2.5 2.5 0 0 1 15 6.5v8a.5.5 0 0 1-1 0v-8A1.5 1.5 0 0 0 12.5 5H2.707l3.147 3.146a.5.5 0 1 1-.708.708z"/>
       </svg>
@@ -54,14 +54,18 @@
         <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2"/>
         <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1z"/>
       </svg></button>
-</div>
+</div>{% endcomment %}
 {% endblock 'contenido_main' %}
 
 {% block 'scripts' %}
 <!-- Aquí <script type="module" src="{% static "js/editar.js" %}"></script>-->
 <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
 <!--<script type="module" src="{% static "js\editar.js" %}"></script>-->
+{% comment %} 
+quitar comentarios para las funciones de editar de; JS 
 <script type="module" src="../../static/js/editar.js"></script>
+
+{% endcomment %}
 
 {% endblock 'scripts' %}
 
