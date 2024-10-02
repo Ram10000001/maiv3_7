@@ -200,9 +200,10 @@ function generatePDF(div) {
 
 //convierte las preguntas a objetos
 function convertirObjeto(botResponse) {
+  console.log(botResponse);
   let data = JSON.parse(botResponse);
   let respuesta = crearExamenJson(data.examen);
-  console.log(respuesta);
+  //console.log(respuesta);
   return respuesta;
 }
 
@@ -211,7 +212,7 @@ function showModelResponse(botResponse) {
   //let responseText = processusExam(botResponse);
   let test = convertirObjeto(botResponse);
   let responseText = convertirExamen(test);
-  console.log(responseText);
+  //console.log(responseText);
   let chatbox = document.getElementById("chatbox");
   let div = document.createElement("div"); // Crear un nuevo elemento div para la burbuja de chat
   let p = document.createElement("p"); // Crear un nuevo elemento p para el texto del chat
@@ -267,6 +268,7 @@ function obtenerRespuesta() {
 
   const csrftoken = getCookie("csrftoken");
   //showLoadingAnimation();
+  console.log(userText);
   processRequest(userText, csrftoken); //Procesa la peticion del usuario y extrae la respuesta de Gemini
 }
 
@@ -381,11 +383,11 @@ function botePronto() {
 
 export function sendButton() {
   //var texto = document.getElementById("textInput").value;
-  //if (texto) {
+  // if (texto) {
   //getResponse();
-  console.log("Flag enviar");
-  //obtenerRespuesta();
-  botePronto();
+  obtenerRespuesta();
+  //console.log("Flag enviar");
+  //botePronto();
   //}
 }
 
