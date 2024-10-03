@@ -6,7 +6,7 @@ try:
     connection = psycopg2.connect(
         dbname="neuronas",
         user="postgres",
-        password="R@ms123",
+        password="R@ms2002",
         host="localhost",
         port="5432"
     )
