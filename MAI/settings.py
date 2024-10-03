@@ -77,11 +77,7 @@ INSTALLED_APPS = [
     'corsheaders',
     "rest_framework",
     "api",
-
     'example',
-
-    'storages',
-
 ] + APPS
 
 
