@@ -201,12 +201,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Basic Storage configuration for Amazon S3
-
-AWS_STORAGE_BUCKET_NAME = 'mai-static'
-AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-AWS_S3_FILE_OVERWRITE = False
-
 STORAGES = {
     # Media file (image) management
 
