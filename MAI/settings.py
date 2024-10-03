@@ -31,7 +31,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', default='your secret key')
 DEBUG = 'RENDER' not in os.environ
 
 ALLOWED_HOSTS = ["127.0.0.1", ".vercel.app",
-                 ".now.sh", "mai-634u.onrender.com"]
+                 ".now.sh", "mai-634u.onrender.com", "77.243.85.13"]
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
