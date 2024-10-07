@@ -3,6 +3,8 @@ import { convertirExamen, processusExam } from "./htmlconverter.js";
 import { crearExamenJson } from "./claseexamen.js";
 //import { ventanaFlotante } from "./ventanaf.js";
 
+const csrftoken = getCookie("csrftoken");
+
 export function getCookie(name) {
   let cookieValue = null;
   if (document.cookie && document.cookie !== "") {
@@ -45,11 +47,11 @@ export function firstBotMessage(nombre) {
   document.getElementById("userInput").scrollIntoView(false);
 }
 
-function sendAjaxRequest(csrftoken) {
+/*function sendAjaxRequest(csrftoken) {
   //hideLoadingAnimation();
   return new Promise((resolve, reject) => {
     $.ajax({
-      url: "/cerebro/recibir/", // La URL de tu vista uwu
+      url: "/cerebro/recibir/", // La URL de tu vista 
       type: "GET",
       headers: { "X-CSRFToken": csrftoken },
       success: function (data) {
@@ -60,8 +62,29 @@ function sendAjaxRequest(csrftoken) {
       },
     });
   });
+}*/
+
+//recibe la respuesta de la IA
+function sendAjaxRequest(csrftoken, dataToSend) {
+  return new Promise((resolve, reject) => {
+    $.ajax({
+      url: "/cerebro/recibir/", // La URL de tu vista
+      type: "POST",
+      headers: { "X-CSRFToken": csrftoken },
+      data: JSON.stringify(dataToSend),
+      contentType: "application/json",
+      success: function (data) {
+        resolve(data);
+      },
+      error: function (error) {
+        reject(error);
+      },
+    });
+  });
 }
 
+
+//Envia la respuesta a la IA para que la procese
 function processRequest(userText, csrftoken) {
   $.ajax({
     url: "/cerebro/enviar/",
@@ -70,7 +93,7 @@ function processRequest(userText, csrftoken) {
     headers: { "X-CSRFToken": csrftoken },
   })
     .then((data) => {
-      sendAjaxRequest(csrftoken) //Envia la respuesta a la IA para que la procese
+      sendAjaxRequest(csrftoken)
         .then((data) => {
           //showModelResponse(data.respuesta); //Muestra la respuesta de la IA en el chat
           console.log("AJAX FLAG");
@@ -109,11 +132,47 @@ function formatBubbleChat(div) {
   div.appendChild(pdfButton); // Añadir el botón "Generar PDF" al div
 }
 
-function pasarEditor(div) {
+/*function pasarEditor(div) {
   // Crear el enlace de redirección
   let url = "/editor/editor?text=" + encodeURIComponent(div.innerHTML);
   // Redirigir automáticamente a la nueva URL
   window.location.href = url;
+}*/
+
+function sendTextData(csrftoken, textData) {
+  return new Promise((resolve, reject) => {
+    $.ajax({
+      url: "/editor/editor/",  // La URL sigue siendo la misma
+      type: "POST",  // Enviamos una solicitud POST
+      headers: {
+        "X-CSRFToken": csrftoken  // Incluye el token CSRF para la seguridad
+      },
+      data: {
+        text: textData  // Envía el texto en el cuerpo de la solicitud
+      },
+      success: function (response) {
+        resolve(response);  // Resuelve la promesa en caso de éxito
+      },
+      error: function (error) {
+        reject(error);  // Rechaza la promesa en caso de error
+      }
+    });
+  });
+}
+
+function pasarEditor(div) {
+  // Obtener el contenido del div
+  const textContent = div.innerHTML;
+
+  // Llamar a la función AJAX que envía el contenido al editor
+  sendTextData(csrftoken, textContent)
+    .then(response => {
+      // Redirigir al editor una vez que se haya enviado el contenido
+      window.location.href = "/editor/editor";  // El servidor manejará la solicitud GET
+    })
+    .catch(error => {
+      console.error('Error al enviar datos:', error);
+    });
 }
 
 //Muestra la respuesta de la IA en el chat
@@ -238,7 +297,7 @@ function showUserText(userText) {
 function getResponse() {
   let userText = $("#textInput").val();
   const csrftoken = getCookie("csrftoken");
-  showUserText(userText); //Muestra el texto del usuario en el chat
+  //showUserText(userText); //Muestra el texto del usuario en el chat
   //showLoadingAnimation();
   processRequest(userText, csrftoken); //Procesa la peticion del usuario y extrae la respuesta de Gemini
 }

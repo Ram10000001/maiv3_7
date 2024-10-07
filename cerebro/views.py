@@ -15,7 +15,7 @@ def enviar(request):  # Envia la respuesta del usuario y la guarda en BD
 
 
 def recibir(request):  # Obtiene la ultima respuesta de Gemini guardada en la BD
-    if request.method == 'GET':
+    if request.method == 'POST':
         ultimaRespuesta = Pregunta.objects.latest('id').parts
         return JsonResponse({'respuesta': ultimaRespuesta})
     else:
@@ -33,7 +33,6 @@ def enviarAPrompt(request):  # Envia las variables materia y grado al prompt
 
 
 def renderizar_pagina(request):
-    # tous()
     return render(request, "cerebro/res.html", {})
 
 
