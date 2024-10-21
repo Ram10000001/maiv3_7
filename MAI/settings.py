@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', default='your secret key')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'RENDER' not in os.environ
 
-ALLOWED_HOSTS = ["127.0.0.1", ".vercel.app",
+ALLOWED_HOSTS = ["127.0.0.1",
                  ".now.sh", "mai-634u.onrender.com", "77.243.85.13"]
 
 REST_FRAMEWORK = {
@@ -138,15 +138,11 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         "NAME": "neuronas",
         "USER": "postgres",
-        "PASSWORD": "R@ms2002",
+        "PASSWORD": "Ram123",
         'HOST': 'localhost',
         "PORT": "5432",
     }
 }
-
-"""DATABASES = {
-    'default': dj_database_url.parse(env('DATABASE_URL'))
-}"""
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators

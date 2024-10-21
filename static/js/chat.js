@@ -47,23 +47,6 @@ export function firstBotMessage(nombre) {
   document.getElementById("userInput").scrollIntoView(false);
 }
 
-/*function sendAjaxRequest(csrftoken) {
-  //hideLoadingAnimation();
-  return new Promise((resolve, reject) => {
-    $.ajax({
-      url: "/cerebro/recibir/", // La URL de tu vista 
-      type: "GET",
-      headers: { "X-CSRFToken": csrftoken },
-      success: function (data) {
-        resolve(data);
-      },
-      error: function (error) {
-        reject(error);
-      },
-    });
-  });
-}*/
-
 //recibe la respuesta de la IA
 function sendAjaxRequest(csrftoken, dataToSend) {
   return new Promise((resolve, reject) => {
@@ -466,3 +449,20 @@ document
       sendButton(); // Llama a la función para enviar el mensaje
     }
   });*/
+
+  /*function sendAjaxRequest(csrftoken) {
+  //hideLoadingAnimation();
+  return new Promise((resolve, reject) => {
+    $.ajax({
+      url: "/cerebro/recibir/", // La URL de tu vista 
+      type: "GET",
+      headers: { "X-CSRFToken": csrftoken },
+      success: function (data) {
+        resolve(data);
+      },
+      error: function (error) {
+        reject(error);
+      },
+    });
+  });
+}*/
