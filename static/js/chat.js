@@ -1,7 +1,7 @@
-//import { showLoadingAnimation, hideLoadingAnimation } from "./loadanim.js";
 import { convertirExamen, processusExam } from "./htmlconverter.js";
 import { crearExamenJson } from "./claseexamen.js";
 //import { ventanaFlotante } from "./ventanaf.js";
+//import { showLoadingAnimation, hideLoadingAnimation } from "./loadanim.js";
 
 const csrftoken = getCookie("csrftoken");
 
@@ -115,13 +115,6 @@ function formatBubbleChat(div) {
   div.appendChild(pdfButton); // Añadir el botón "Generar PDF" al div
 }
 
-/*function pasarEditor(div) {
-  // Crear el enlace de redirección
-  let url = "/editor/editor?text=" + encodeURIComponent(div.innerHTML);
-  // Redirigir automáticamente a la nueva URL
-  window.location.href = url;
-}*/
-
 function sendTextData(csrftoken, textData) {
   return new Promise((resolve, reject) => {
     $.ajax({
@@ -144,13 +137,10 @@ function sendTextData(csrftoken, textData) {
 }
 
 function pasarEditor(div) {
-  // Obtener el contenido del div
-  const textContent = div.innerHTML;
-
-  // Llamar a la función AJAX que envía el contenido al editor
-  sendTextData(csrftoken, textContent)
-    .then(response => {
-      // Redirigir al editor una vez que se haya enviado el contenido
+  const textContent = div.innerHTML; // Obtener el contenido del div
+  
+  sendTextData(csrftoken, textContent)  // Llamar a la función AJAX que envía el contenido al editor
+    .then(response => { // Redirigir al editor una vez que se haya enviado el contenido
       window.location.href = "/editor/editor";  // El servidor manejará la solicitud GET
     })
     .catch(error => {
@@ -160,13 +150,18 @@ function pasarEditor(div) {
 
 //Muestra la respuesta de la IA en el chat
 function modelResponse(botResponse) {
+
   //let responseText = processusExam(botResponse);
   let test = convertirObjeto(botResponse);
-  let responseText = convertirExamen(test);
+  let responseText = convertirExamen(test); \
+
   console.log(responseText);
+
   let div = document.createElement("div"); // Crear un nuevo elemento div para la burbuja de chat
   let p = document.createElement("p"); // Crear un nuevo elemento p para el texto del chat
   let span = document.createElement("span"); // Crear un nuevo elemento span
+
+  //HTML
   div.className = "botText"; // Asegúrate de que el div tiene la clase correcta para la burbuja del chat
   span.innerHTML = responseText; // Añadir el contenido HTML al span
   p.appendChild(span); // Añadir el span al p
@@ -188,6 +183,7 @@ function eliminarEtiquetas(str) {
 }
 
 function generatePDF(div) {
+
   let pdf = new jsPDF({
     unit: "pt", // Unidades en puntos
     format: ["595.28", "841.89"], // Tamaño de página A4 en puntos
@@ -203,6 +199,7 @@ function generatePDF(div) {
   let y = margenSuperiorInferior;
   let contadorPregunta = 0;
   let contadorOpcion = 0;
+
   for (let linea of lineas) {
     if (linea.startsWith("Cultura General")) {
       pdf.setFontSize(20); // Tamaño de fuente para el título
@@ -249,7 +246,90 @@ function convertirObjeto(botResponse) {
   return respuesta;
 }
 
-//Muestra la respuesta de la IA en el chat
+export function sendButton() {
+  let userText =
+    "Genera un examen de " +
+    document.getElementById("input0_tema").value +
+    " para el grado de " +
+    document.getElementById("input1_grado").value +
+    " con la siguiente cantidad del tipo de preguntas: opcion_multiple:" +
+    document.getElementById("state_opc_mul").value +
+    " verdadero_falso:" +
+    document.getElementById("state_ver_fal").value +
+    " respuesta_corta:" +
+    document.getElementById("state_res_cor").value +
+    " emparejamiento:" +
+    document.getElementById("state_emp").value +
+    " respuesta_numerica:" +
+    document.getElementById("state_res_num").value +
+    " respuesta_larga:" +
+    document.getElementById("state_res_lar").value +
+    " seleccion_multiple:" +
+    document.getElementById("state_sel_mul").value +
+    " rellenar_espacios:" +
+    document.getElementById("state_rel_esp").value;
+
+  const csrftoken = getCookie("csrftoken");
+  //showLoadingAnimation();
+  console.log(userText);
+  processRequest(userText, csrftoken); //Procesa la peticion del usuario y extrae la respuesta de Gemini
+}
+
+// Press enter to send a message
+/*$("#textInput").keypress(function (e) {
+  if (e.which == 13) {
+    getResponse();
+  }
+});
+
+// Evita el salto de línea
+document
+  .getElementById("textInput")
+  .addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      sendButton(); // Llama a la función para enviar el mensaje
+    }
+  });*/
+
+/*function sendAjaxRequest(csrftoken) {
+//hideLoadingAnimation();
+return new Promise((resolve, reject) => {
+  $.ajax({
+    url: "/cerebro/recibir/", // La URL de tu vista 
+    type: "GET",
+    headers: { "X-CSRFToken": csrftoken },
+    success: function (data) {
+      resolve(data);
+    },
+    error: function (error) {
+      reject(error);
+    },
+  });
+});
+}*/
+
+/*// Handles sending text via button clicks
+function buttonSendText(sampleText) {
+  let userHtml = '<p class="userText"><span>' + sampleText + "</span></p>";
+  $("#textInput").val("");
+  $("#chatbox").append(userHtml);
+  document.getElementById("chat-bar-bottom").scrollIntoView(true);
+
+  //Uncomment this if you want the bot to respond to this buttonSendText event
+  // setTimeout(() => {
+  //     showModelResponse(sampleText);
+  // }, 1000)
+}*/
+
+/*function pasarEditor(div) {
+  // Crear el enlace de redirección
+  let url = "/editor/editor?text=" + encodeURIComponent(div.innerHTML);
+  // Redirigir automáticamente a la nueva URL
+  window.location.href = url;
+}*/
+
+/*//Muestra la respuesta de la IA en el chat
 function showModelResponse(botResponse) {
   //let responseText = processusExam(botResponse);
   let test = convertirObjeto(botResponse);
@@ -283,186 +363,4 @@ function getResponse() {
   //showUserText(userText); //Muestra el texto del usuario en el chat
   //showLoadingAnimation();
   processRequest(userText, csrftoken); //Procesa la peticion del usuario y extrae la respuesta de Gemini
-}
-
-function obtenerRespuesta() {
-  let userText =
-    "Genera un examen de " +
-    document.getElementById("input0_tema").value +
-    " para el grado de " +
-    document.getElementById("input1_grado").value +
-    " con la siguiente cantidad del tipo de preguntas: opcion_multiple:" +
-    document.getElementById("state_opc_mul").value +
-    " verdadero_falso:" +
-    document.getElementById("state_ver_fal").value +
-    " respuesta_corta:" +
-    document.getElementById("state_res_cor").value +
-    " emparejamiento:" +
-    document.getElementById("state_emp").value +
-    " respuesta_numerica:" +
-    document.getElementById("state_res_num").value +
-    " respuesta_larga:" +
-    document.getElementById("state_res_lar").value +
-    " seleccion_multiple:" +
-    document.getElementById("state_sel_mul").value +
-    " rellenar_espacios:" +
-    document.getElementById("state_rel_esp").value;
-
-  const csrftoken = getCookie("csrftoken");
-  //showLoadingAnimation();
-  console.log(userText);
-  processRequest(userText, csrftoken); //Procesa la peticion del usuario y extrae la respuesta de Gemini
-}
-
-// Handles sending text via button clicks
-function buttonSendText(sampleText) {
-  let userHtml = '<p class="userText"><span>' + sampleText + "</span></p>";
-  $("#textInput").val("");
-  $("#chatbox").append(userHtml);
-  document.getElementById("chat-bar-bottom").scrollIntoView(true);
-
-  //Uncomment this if you want the bot to respond to this buttonSendText event
-  // setTimeout(() => {
-  //     showModelResponse(sampleText);
-  // }, 1000)
-}
-
-function botePronto() {
-  let botResponse = {
-    examen: {
-      titulo: "Examen de Biología - La Célula",
-      descripcion:
-        "Este examen evalúa tu conocimiento sobre la célula, su estructura y funciones.",
-      preguntas: [
-        {
-          tipo: "opcion_multiple",
-          enunciado:
-            "¿Cuál de las siguientes NO es una característica de todas las células?",
-          instrucciones: "Selecciona una opción de las proporcionadas.",
-          opciones: [
-            "Membrana plasmática",
-            "Pared celular",
-            "Material genético",
-            "Ribosomas",
-          ],
-          respuesta_correcta: "Pared celular",
-          fuente:
-            "https://es.khanacademy.org/science/biology/structure-of-a-cell",
-        },
-        {
-          tipo: "verdadero_falso",
-          enunciado: "La mitocondria es responsable de la fotosíntesis.",
-          instrucciones: "Selecciona 'Verdadero' o 'Falso'.",
-          respuesta_correcta: "Falso",
-          fuente:
-            "https://es.khanacademy.org/science/biology/structure-of-a-cell/tour-of-organelles/a/chloroplasts-and-mitochondria",
-        },
-        {
-          tipo: "respuesta_corta",
-          enunciado:
-            "¿Cómo se llama el proceso por el cual la célula vegetal produce su propio alimento?",
-          instrucciones: "Escribe tu respuesta en el espacio proporcionado.",
-          respuesta_correcta: "Fotosíntesis",
-          fuente:
-            "https://es.khanacademy.org/science/biology/cellular-respiration-and-fermentation",
-        },
-        {
-          tipo: "emparejamiento",
-          enunciado: "Relaciona cada organelo con su función:",
-          instrucciones: "Arrastra cada organelo a su función correspondiente.",
-          pares: [
-            { opcion: "Núcleo", enlace: "Almacena el ADN celular" },
-            { opcion: "Ribosomas", enlace: "Sintetizan proteínas" },
-            { opcion: "Mitocondria", enlace: "Produce energía (ATP)" },
-          ],
-          fuente:
-            "https://es.khanacademy.org/science/biology/structure-of-a-cell",
-        },
-        {
-          tipo: "respuesta_numerica",
-          enunciado: "¿Cuántos cromosomas tiene una célula humana normal?",
-          instrucciones: "Escribe el número.",
-          respuesta_correcta: 46,
-          fuente:
-            "https://medlineplus.gov/spanish/genetics/understanding/basics/chromosome/",
-        },
-        {
-          tipo: "respuesta_larga",
-          enunciado:
-            "Describe las diferencias entre una célula procariota y una eucariota.",
-          instrucciones: "Escribe tu respuesta en el espacio proporcionado.",
-          fuente:
-            "https://es.khanacademy.org/science/biology/structure-of-a-cell/prokaryotic-and-eukaryotic-cells/a/prokaryotic-cells",
-        },
-        {
-          tipo: "seleccion_multiple",
-          enunciado:
-            "Selecciona las dos opciones que son componentes de la pared celular vegetal.",
-          instrucciones: "Puede haber más de una respuesta correcta.",
-          opciones: ["Celulosa", "Quitina", "Peptidoglucano", "Lignina"],
-          respuestas_correctas: ["Celulosa", "Lignina"],
-          fuente:
-            "https://es.khanacademy.org/science/biology/structure-of-a-cell/plant-cell-structures-and-functions/a/plant-cell-walls",
-        },
-        {
-          tipo: "rellenar_espacios",
-          enunciado:
-            "La ___________ es el medio gelatinoso dentro de la célula donde se encuentran los organelos.",
-          instrucciones: "Escribe la palabra que falta en el espacio.",
-          respuesta_correcta: "Citoplasma",
-          fuente:
-            "https://es.khanacademy.org/science/biology/structure-of-a-cell",
-        },
-      ],
-    },
-  };
-
-  // Convertir a JSON string
-  let botResponseJSON = JSON.stringify(botResponse);
-  console.log(botResponseJSON);
-  modelResponse(botResponseJSON);
-}
-
-export function sendButton() {
-  obtenerRespuesta();
-  //var texto = document.getElementById("textInput").value;
-  // if (texto) {
-  //getResponse();
-  //console.log("Flag enviar");
-  //botePronto();
-  //}
-}
-
-// Press enter to send a message
-/*$("#textInput").keypress(function (e) {
-  if (e.which == 13) {
-    getResponse();
-  }
-});
-
-// Evita el salto de línea
-document
-  .getElementById("textInput")
-  .addEventListener("keydown", function (event) {
-    if (event.key === "Enter") {
-      event.preventDefault();
-      sendButton(); // Llama a la función para enviar el mensaje
-    }
-  });*/
-
-  /*function sendAjaxRequest(csrftoken) {
-  //hideLoadingAnimation();
-  return new Promise((resolve, reject) => {
-    $.ajax({
-      url: "/cerebro/recibir/", // La URL de tu vista 
-      type: "GET",
-      headers: { "X-CSRFToken": csrftoken },
-      success: function (data) {
-        resolve(data);
-      },
-      error: function (error) {
-        reject(error);
-      },
-    });
-  });
 }*/

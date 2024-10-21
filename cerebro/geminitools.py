@@ -74,7 +74,6 @@ def show_chat_history(chat):
 
 def geminiRespuesta(userText):
     model = genai.GenerativeModel( model_name="gemini-1.5-flash", generation_config=generation_config,)
-    #chat = model.start_chat(history=historial())
     chat = model.start_chat()
     response = chat.send_message(userText, safety_settings=None)
     return response.text
@@ -116,7 +115,7 @@ def revisar_JSON(userText: str):
 # Procesa la pregunta primero para ver como reacciona el modelo
 def procesar_preg(userText):
     respuesta = revisar_JSON(userText)
+
     # Una vez procesada la respuesta, se guarda la pregunta del usuario y la respuesta del modelo
-    
     Pregunta.objects.create(role="user", parts=userText)
     Pregunta.objects.create(role="model", parts=respuesta)
